@@ -10,7 +10,7 @@
         <meta name="keywords" content="左右结构项目 社交 占座 ">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
-        <title>Bootstrap左右结构响应式后台管理模板</title>
+        <title>国网成效分析</title>
         <script src="<%=request.getContextPath()%>/static/css/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/static/css/bootstrap.min.js"></script>
         <link href="<%=request.getContextPath()%>/static/css/bootstrap.min.css" rel="stylesheet">
@@ -68,12 +68,15 @@
                 <div class="meun-item meun-item-active"><img src="../static/images/icon_source.png"><a href="echart" target="mainframe">建设模式</a></div>
                	  <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href="chart" target="mainframe">建设规模对比分析</a></div>
                 <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png">投入成本</div>
+                 <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png">投入成本对比分析</div>
                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="touziANDxiaoyi" target="mainframe">应用效益</a></div>
-                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="bootstrapTest1" target="mainframe">计算公式</a></div>
+                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="#" target="mainframe">应用效益对比分析</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="bootstrapTest1" target="mainframe">成效计算公式</a></div>
                 <div class="meun-title">综合统计分析</div>
                 <div class="meun-item" ><img src="../static/images/icon_house_grey.png">统计分析</div>
-                <div class="meun-item" ><img src="../static/images/icon_rule_grey.png">应用效益</div>
+                <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="image" target="mainframe">建设模式可视化</a></div>
                 <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="map" target="mainframe">综合结论</a></div>
+              
             	
             </div>
             <!-- 右侧具体内容栏目 -->

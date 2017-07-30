@@ -90,6 +90,15 @@ public class UserController extends BaseController {
 	public String touziANDxiaoyo(){
 		return "Echart/touziANDxiaoyi";
 	}
+	/**
+	 *  显示建设模式可视化
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/image")
+	public String image(){
+		return "Echart/image";
+	}
 	
 		
     /**

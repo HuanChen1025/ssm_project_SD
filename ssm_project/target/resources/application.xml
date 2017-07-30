@@ -49,16 +49,16 @@
 			<property name="password" value="christmas258@" /> -->
 	   <!-- 使用properties来配置 -->
 		<property name="driverClassName">
-			<value>${jdbc_driverClassName}</value>
+			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="url">
-			<value>${jdbc_url}</value>
+			<value>jdbc:oracle:thin:@localhost:1521:ORCL</value>
 		</property>
 		<property name="username">
-			<value>${jdbc_username}</value>
+			<value>sd_cxfx</value>
 		</property>
 		<property name="password">
-			<value>${jdbc_password}</value>
+			<value>tiger</value>
 		</property>
 	</bean>
 

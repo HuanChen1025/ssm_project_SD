@@ -86,10 +86,59 @@
      chart.setOption(option); 
 });
 	</script>
+
+<script type="text/javascript">
+	 var pieChart = echarts.init(document.getElementById('pieChart'));
+	 option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:['类别1','类别2','类别3']
+    },
+    series: [
+        {
+            name:'建设模式分类',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:8, name:'类别1'},
+                {value:10, name:'类别2'},
+                {value:24, name:'类别3'},
+               
+            ]
+        }
+    ]
+};
+pieChart.setOption(option);
+
+</script>
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 1000px;height:800px;"></div>
-
+	<div id="pieChart" class="pieChart"></div>
 </body>
 </html>
