@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.dao.XtdDao">
+
+ <!-- 主站-配网协调度 -->
+    <select id="SelectZZPWXTD" parameterType="java.lang.String" resultType="com.lin.domain.XtdData">
+    select time,value from T_MAIN_XYZ where orgno=#{selectArea,jdbcType=VARCHAR} and element_name='主站—配网设备协调度'
+    </select>
+    <!-- 终端—配网设备匹配度 -->
+  <select id="SelectZDPWXTD" parameterType="java.lang.String" resultType="com.lin.domain.XtdData">
+    select time,value from T_MAIN_XYZ where orgno=#{selectArea,jdbcType=VARCHAR} and element_name='终端—配网设备匹配度'
+    </select>
+    <!-- 网架—通信协调度 -->
+     <select id="SelectWJTXXTD" parameterType="java.lang.String" resultType="com.lin.domain.XtdData">
+    select time,value from T_MAIN_XYZ where orgno=#{selectArea,jdbcType=VARCHAR} and element_name='网架—通信协调度'
+    </select>
+    <!-- 配网设备重要性与终端类型匹配度 -->
+     <select id="Select_PWSB_ZDLX_XTD" parameterType="java.lang.String" resultType="com.lin.domain.XtdData">
+    select time,value from T_MAIN_XYZ where orgno=#{selectArea,jdbcType=VARCHAR} and element_name='配网设备重要性与终端类型匹配度'
+    </select>
+</mapper>
