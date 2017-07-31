@@ -12,5 +12,7 @@ public interface TouziDao {
 	List<ResultData> selectSHXY(@Param("selectArea") String area);
 	
 	List<ResultData> selectQYXY(@Param("selectArea") String area);
+	
+	List<ResultData> selectYWCB(@Param("selectArea") String area);
 
 }

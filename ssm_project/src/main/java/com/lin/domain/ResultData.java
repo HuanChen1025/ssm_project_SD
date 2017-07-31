@@ -38,7 +38,7 @@ public class ResultData {
 
 	@Override
 	public String toString() {
-		return "通信网数据 [element=" + element_name + ", value=" + value
+		return "Data [element=" + element_name + ", value=" + value
 				+ "]";
 	}
 	

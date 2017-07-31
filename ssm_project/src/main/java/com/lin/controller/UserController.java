@@ -86,9 +86,9 @@ public class UserController extends BaseController {
 	 *  @since 2017年7月24日 
 	 * @return
 	 */
-	@RequestMapping("/touziANDxiaoyi")
+	@RequestMapping("/xiaoyi")
 	public String touziANDxiaoyo(){
-		return "Echart/touziANDxiaoyi";
+		return "Echart/xiaoyi";
 	}
 	/**
 	 *  显示建设模式可视化
@@ -99,8 +99,59 @@ public class UserController extends BaseController {
 	public String image(){
 		return "Echart/image";
 	}
+	//xiaoyiContract
+	/**
+	 *  显示效益数据对比查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/xiaoyiContract")
+	public String xiaoyiContract(){
+		return "Echart/xiaoyiContract";
+	}
 	
-		
+	//Yunwei
+	/**
+	 *  显示运维成本数据的单地区查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/Yunwei")
+	public String Yunwei(){
+		return "Echart/Yunwei";
+	}
+	
+	/**
+	 *  显示运维成本数据对比查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/YunweiContract")
+	public String YunweiContract(){
+		return "Echart/YunweiContract";
+	}
+	//JsmsLine
+	/**
+	 *  显示运维成本数据对比查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/JsmsLine")
+	public String JsmsLine(){
+		return "Echart/JsmsLine";
+	}
+	//TrcbLine
+	/**
+	 *  显示运维成本数据对比查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/TrcbLine")
+	public String TrcbLine(){
+		return "Echart/TrcbLine";
+	}
+	
+	
     /**
      * 分页查询公式信息
      * @author chenhuan

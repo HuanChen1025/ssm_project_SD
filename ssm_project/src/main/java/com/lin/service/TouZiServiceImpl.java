@@ -26,6 +26,12 @@ public class TouZiServiceImpl implements TouZiService {
 		List<ResultData> list = touziDao.selectQYXY(city);
 		return list;
 	}
+
+	@Override
+	public List<ResultData> selectYWCB(String city) {
+		List<ResultData> list = touziDao.selectYWCB(city);
+		return list;
+	}
 	
 
 }

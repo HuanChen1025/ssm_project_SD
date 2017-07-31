@@ -10,4 +10,14 @@
 	<select id="selectQYXY" resultType="com.lin.domain.ResultData">
 		select element_name, value from T_CXFX_MAIN_CQU  where model_name='企业效益' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
 	</select>
+	
+	
+<!-- 运维成本 -->
+<select id="selectYWCB" resultType="com.lin.domain.ResultData">
+select element_name, value from T_CXFX_MAIN_CQU  where model_name='运维成本' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+</select>
+
+<!-- 建设成本 -->
+	
+	
 </mapper>
