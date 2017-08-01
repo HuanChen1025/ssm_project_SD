@@ -77,7 +77,7 @@ public class ChartController  extends BaseController {
 	@RequestMapping(value="/contrastQuery2.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String contrastQuery2(long[] city){
-		logger.info("请求通信网数据的城市进入，city{}",city);
+		logger.info("请求配电自动化数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
 		for (long l : city) {
@@ -113,7 +113,7 @@ public class ChartController  extends BaseController {
 	@RequestMapping(value="/contrastQuery3.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String contrastQuery3(long[] city){
-		logger.info("请求通信网数据的城市进入，city{}",city);
+		logger.info("请求一次设备改造的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
 		for (long l : city) {
@@ -150,7 +150,7 @@ public class ChartController  extends BaseController {
 	@RequestMapping(value="/contrastQuery4.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String contrastQuery4(long[] city){
-		logger.info("请求通信网数据的城市进入，city{}",city);
+		logger.info("请求线路数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
 		for (long l : city) {

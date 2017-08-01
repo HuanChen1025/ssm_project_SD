@@ -81,10 +81,11 @@ margin-top: 20px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '通信网数据'
+               text: '通信网数据(单位：个)'
             },
             tooltip: {},
             legend: {
+            	 x:'right',
                 data:['数量']
             },
             xAxis: {
@@ -107,10 +108,11 @@ margin-top: 20px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '配电自动化系统数据'
+               text: '配电自动化系统数据(单位：个)'
             },
             tooltip: {},
             legend: {
+            	 x:'right',
                 data:['数量']
             },
             xAxis: {
@@ -133,10 +135,11 @@ margin-top: 20px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '一次设备改造数据'
+               text: '一次设备改造数据(单位：个)'
             },
             tooltip: {},
             legend: {
+            	 x:'right',
                 data:['数量']
             },
             xAxis: {
@@ -159,10 +162,11 @@ margin-top: 20px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '线路数据'
+               text: '线路数据(单位：个)'
             },
             tooltip: {},
             legend: {
+           		 x:'right',
                 data:['数量']
             },
             xAxis: {

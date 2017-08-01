@@ -71,12 +71,12 @@ float:left;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '社会效益数据'
+               text: '运维成本数据(单位：万元)'
             },
             tooltip: {},
-            legend: {
-                data:['数量']
-            },
+           //legend: {
+            //    data:['数量']
+          // },
             xAxis: {
                 data: []
             },

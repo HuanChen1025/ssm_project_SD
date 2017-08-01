@@ -87,7 +87,7 @@ height:400px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '企业效益'
+               text: '企业效益(单位：万元)'
             },
             tooltip: {},
             legend: {
@@ -112,7 +112,7 @@ height:400px;
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
-               text: '社会效益'
+               text: '社会效益(单位：万元)'
             },
             tooltip: {},
             legend: {
