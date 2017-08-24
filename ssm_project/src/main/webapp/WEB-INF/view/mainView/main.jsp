@@ -11,14 +11,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="format-detection" content="telephone=no">
         <title>国网成效分析</title>
-        <script src="<%=request.getContextPath()%>/static/css/jquery.min.js"></script>
-        <script src="<%=request.getContextPath()%>/static/css/bootstrap.min.js"></script>
-        <link href="<%=request.getContextPath()%>/static/css/bootstrap.min.css" rel="stylesheet">
+        <script src="<%=request.getContextPath()%>/static/js/jQuery/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/css/common.css" />
+        <script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
+        <style>
+        	.meun-item a{
+        		text-decoration: none;
+        	} 
+        	 a{
+        		text-decoration: none;
+        	} 
+        	#mainframe{
+        		padding-left: 200px;
+        		width: 100%;
+        		height: 100%;
+        	
+        	}
+        	
         
+        </style>
         <script>
             $(function() {
-                $(".meun-item").click(function() {
+                $(".meun-item ").click(function() {
                     $(".meun-item").removeClass("meun-item-active");
                     $(this).addClass("meun-item-active");
                     var itmeObj = $(".meun-item").find("img");
@@ -65,33 +83,34 @@
                 </div>
                
                 <div class="meun-title">差异化建设</div>
-                <div class="meun-item meun-item-active"><img src="../static/images/icon_source.png"><a href="echart" target="mainframe">建设模式</a></div>
-               	  <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href="chart" target="mainframe">建设规模对比分析</a></div>
-                <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href="Yunwei" target="mainframe">投入成本</a></div>
-                 <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href="YunweiContract" target="mainframe">投入成本对比分析</a></div>
-                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="xiaoyi" target="mainframe">应用效益</a></div>
-                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="xiaoyiContract" target="mainframe">应用效益对比分析</a></div>
-                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href="bootstrapTest1" target="mainframe">成效计算公式</a></div>
+                <div class="meun-item meun-item-active"><img src="../static/images/icon_source.png"><a href=" echart" target="mainframe">建设模式</a></div>
+               	<div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href=" chart" target="mainframe">建设规模对比分析</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href=" Yunwei" target="mainframe">投入成本</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_chara_grey.png"><a href=" YunweiContract" target="mainframe">投入成本对比分析</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" xiaoyi" target="mainframe">应用效益</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" xiaoyiContract" target="mainframe">应用效益对比分析</a></div>
+                <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" bootstrapTest1" target="mainframe">成效计算公式</a></div>
                 <div class="meun-title">综合统计分析</div>
-                <div class="meun-item" ><img src="../static/images/icon_house_grey.png"><a href="TrcbLine" target="mainframe">投入成本分析</a></div>
-				<div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="JsmsLine" target="mainframe">配电自动化关联分析</a></div>
-                <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="image" target="mainframe">建设模式可视化</a></div>
-                <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="map" target="mainframe">综合结论</a></div>
+                <div class="meun-item" ><img src="../static/images/icon_house_grey.png"><a href=" TrcbLine" target="mainframe">投入成本分析</a></div>
+				<div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href=" JsmsLine" target="mainframe">配电自动化关联分析</a></div>
+                <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href=" image" target="mainframe">建设模式可视化</a></div>
+                <div class="meun-item " ><img src="../static/images/icon_card_grey.png"><a href=" map" target="mainframe">综合结论</a></div>
               
             	
             </div>
             <!-- 右侧具体内容栏目 -->
-        	 <div id="rightContent">
-            <iframe id="mainframe" name="mainframe"   marginwidth="0" marginheight="0"
-  			  frameborder="0" width="100%" scrolling="no" height="1000px" "></iframe>
-       		</div>
+            <div id="right"></div>
+            <iframe id="mainframe" name="mainframe" frameborder="no" border="0" scrolling="no"></iframe>
 			</div>
+			
     
-    <!-- 使iframe自适应的高度的代码，需要放在iframe的下方 -->
+    <!-- 使iframe自适应的高度的代码，需要放在iframe的下方
+      //注意：下面的代码是放在和iframe同一个页面调用,放在iframe下面
+     -->
 
     
-      <script type="text/javascript">
-  //注意：下面的代码是放在和iframe同一个页面调用,放在iframe下面
+  	<script type="text/javascript">
+	
     $("#mainframe").load(function () {
         var mainheight = $(this).contents().find("body").height() + 30;
         $(this).height(mainheight);

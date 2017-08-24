@@ -4,24 +4,28 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>建设规模数据查询</title>
-<!-- 引入 echarts.js -->
-<script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
+<title>配电自动化关联分析</title>
+<!-- 引入JS和CSS文件 -->
 <script src="<%=request.getContextPath()%>/static/js/jQuery/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
 <style type="text/css">
-.chartStyle{
-height: 400px;
-width: 1000px;
 
-}
 </style>
 </head>
 <body>
-<div class="style" style="width: 100%;height: 1200px;margin: 10px auto 20px;">
-	<div	id="chart1" class="chartStyle"></div>
-	<div	id="chart2" class="chartStyle"></div>
-	<div	id="chart3" class="chartStyle"></div>
-</div>
+	<div class="row">
+		<div	id="chart1" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+	</div>
+	<div class="row">
+		<div	id="chart2" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+	</div>
+	<div class="row">
+		<div	id="chart3" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+	</div>
 <script type="text/javascript">
 $(document).ready(function(){
 var myChart1 = echarts.init(document.getElementById('chart1'));

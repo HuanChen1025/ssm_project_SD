@@ -198,7 +198,7 @@ $(document).ready(function(){
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div style="height: 850px">
+    <div style="height: 850px;">
     <div id="map"  class="map" ></div>
     <div class="right">
     <div id="pieChart" class="pieChart"   style="width: 400px;height: 400px"></div>
