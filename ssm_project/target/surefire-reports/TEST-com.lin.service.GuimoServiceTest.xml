@@ -20,7 +20,7 @@
     <property name="basedir" value="I:\ssm_project-master\ssm_project"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_40\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\chenhuan\AppData\Local\Temp\surefirebooter8083116650536977394.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\chenhuan\AppData\Local\Temp\surefirebooter4061428066418237037.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\chenhuan\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_40\jre"/>
-    <property name="sun.java.command" value="C:\Users\chenhuan\AppData\Local\Temp\surefirebooter8083116650536977394.jar C:\Users\chenhuan\AppData\Local\Temp\surefire8126740404704580430tmp C:\Users\chenhuan\AppData\Local\Temp\surefire6233440654548309545tmp"/>
+    <property name="sun.java.command" value="C:\Users\chenhuan\AppData\Local\Temp\surefirebooter4061428066418237037.jar C:\Users\chenhuan\AppData\Local\Temp\surefire4390557904315856558tmp C:\Users\chenhuan\AppData\Local\Temp\surefire2299473364708564587tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>

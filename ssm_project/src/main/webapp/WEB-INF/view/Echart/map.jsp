@@ -6,26 +6,17 @@
 <meta charset="utf-8">
 <title>ECharts</title>
 <style type="text/css">
-#map{
-width: 1000px;
-height:800px;
-margin-left: 10px;
-margin-top: 10px;
-float: left;
-}
-.right{
-width: 400;
-height:800;
-float:left;
-margin-left: 30px;
-margin-top: 10px;
-}
     
  </style>
     <!-- 引入 echarts.js -->
-    <script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
 	<script src="<%=request.getContextPath()%>/static/js/echart/shandong.json"></script>
+	<!-- 引入JS和CSS文件 -->
 	<script src="<%=request.getContextPath()%>/static/js/jQuery/jquery-2.1.4.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
 	<script type="text/javascript">
 	
 	$.getJSON("../static/shandong.json", function (SDjson) {
@@ -198,12 +189,27 @@ $(document).ready(function(){
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <!-- 
+    	<div id="map"  class="map" ></div>
+	    <div class="right">
+	    <div id="pieChart" class="pieChart"   style="width: 400px;height: 400px"></div>
+		<div id="lineChart" class="lineChart" style="width: 400px;height: 400px"></div>
+	    </div>
+     -->
     <div style="height: 850px;">
-    <div id="map"  class="map" ></div>
-    <div class="right">
-    <div id="pieChart" class="pieChart"   style="width: 400px;height: 400px"></div>
-	<div id="lineChart" class="lineChart" style="width: 400px;height: 400px"></div>
-    </div>
+       <div class="container-fluid">
+    		<div class="row">
+    			<div class="col-lg-8 col-md-8 col-sm-8">
+    			<div id="map"  style="height: 800px" ></div>
+    			</div>
+    			<div class="col-lg-4 col-md-4 col-sm-4">
+    				<div id="pieChart"    style="height: 400px"></div>
+					<div id="lineChart"   style="height: 400px"></div>
+    			</div>
+    		
+    		</div>
+    
+       </div>
 	</div>
 </body>
 </html>

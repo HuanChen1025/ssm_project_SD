@@ -95,12 +95,12 @@ $(function(){
 </div>
    <div class="row">
   
-     <div id="chart1"   class="col-lg-6"   style="height:430px;" ></div>
-     <div  id="chart2"  class="col-lg-6"  style="height:430px;"  ></div>
+     <div id="chart1"   class="col-lg-6 col-md-6"   style="height:430px;" ></div>
+     <div  id="chart2"  class="col-lg-6 col-md-6"  style="height:430px;"  ></div>
   </div>
     <div class="row">
-    <div id="chart3" class="col-lg-6"   style="height:430px;"  ></div>
-    <div id="chart4" class="col-lg-6"   style="height:430px;" ></div>
+    <div id="chart3" class="col-lg-6 col-md-6"   style="height:430px;"  ></div>
+    <div id="chart4" class="col-lg-6 col-md-6"   style="height:430px;" ></div>
      </div>
 
 </div></div>
