@@ -116,7 +116,7 @@
         $(this).height(mainheight);
     });
         
-	</script>  
+	</script>
     
     
 
