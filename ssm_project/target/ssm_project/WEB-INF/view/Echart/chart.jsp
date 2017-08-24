@@ -54,21 +54,34 @@ $(function(){
 	             <div class="panel-body" ">
 	                 <label class="control-label" for="cityName">选择查询地区：</label>
 						<select class="combox" id="cityName" name="recommenderId" multiple> 
-								<option value="">请选择...</option>
-							<optgroup label="大型主站">
-								<option name='test' value="37401">济南</option>
-								<option name='test' value="37410">威海</option>
-								<option name='test'  value="37402">青岛</option>
-								<option name='test' value="37407">潍坊</option>
-							</optgroup>
-							<optgroup label="中型主站">
-								<option name='test' value="37413">临沂</option>
-								<option name='test' value="37406">烟台</option>
-								<option name='test' value="37414">德州</option>
-								<option  name='test' value="37407">潍坊</option>
-							</optgroup>
-						</select>&nbsp;&nbsp;&nbsp;
-			 			<label class="control-label" for="time">选择查询时间：</label>
+								  <option value="">请选择...</option>
+					<optgroup label="大型主站">
+						<option value="37401">济南</option>
+						<option value="37402">青岛</option>
+						<option value="37403">淄博</option>
+						<option value="37407">潍坊</option>
+						<option value="37406">烟台</option>
+						<option value="37408">济宁</option>
+						<option value="37413">临沂</option>
+						<option value="37414">德州</option>
+						<option value="37409">泰安</option>
+						<option value="37415">聊城</option>
+						<option value="37414">枣庄</option>
+						<option value="37417">菏泽</option>
+						<option value="37405">东营</option>
+						
+					</optgroup>
+					<optgroup label="中型主站">
+						<option value="37412">莱芜</option>
+						<option value="37416">滨州</option>
+						<option value="37411">日照</option>
+						<option value="37410">威海</option>
+					</optgroup>
+					<optgroup label="小型主站">
+					</optgroup>
+						</select>
+		                &nbsp;&nbsp;&nbsp;
+		                <label class="control-label" for="time">选择查询时间：</label>
 						<select class="combox" id="time" name="tagId" > 
 								<option value="">请选择...</option>
 							<optgroup label="查询时间">
@@ -80,20 +93,21 @@ $(function(){
 								<option value="2017">2017</option>
 							</optgroup>
 						</select>
-		                <button id="submit" class="btn-primary" type="button">查询</button>
+						&nbsp;&nbsp;&nbsp;
+		                   <button id="submit" class="btn-primary" type="button" style="width:60px">查询</button>
 	          </div>
          </div>
     	<div class="row">
-    		<div id="chart1" class="col-lg-10" style="height:400px;"></div>
+    		<div id="chart1" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
     	</div>
         <div class="row">
-    		<div id="chart2" class="col-lg-10" style="height:400px;"></div>
+    		<div id="chart2" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
     	</div>
         <div class="row">
-    		<div id="chart3" class="col-lg-10" style="height:400px;"></div>
+    		<div id="chart3" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
         </div>
         <div class="row">
-    		<div id="chart4" class="col-lg-10" style="height:400px;"></div>
+    		<div id="chart4" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
         </div>
     
     

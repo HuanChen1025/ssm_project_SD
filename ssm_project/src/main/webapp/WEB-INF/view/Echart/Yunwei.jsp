@@ -54,18 +54,30 @@ $(function(){
 	            <label class="control-label" for="cityName">选择查询地区：</label>
 			
 				<select class="combox" id="cityName" name="recommenderId"> 
-					    <option value="">请选择...</option>
+					     <option value="">请选择...</option>
 					<optgroup label="大型主站">
 						<option value="37401">济南</option>
-						<option value="37410">威海</option>
 						<option value="37402">青岛</option>
+						<option value="37403">淄博</option>
 						<option value="37407">潍坊</option>
+						<option value="37406">烟台</option>
+						<option value="37408">济宁</option>
+						<option value="37413">临沂</option>
+						<option value="37414">德州</option>
+						<option value="37409">泰安</option>
+						<option value="37415">聊城</option>
+						<option value="37414">枣庄</option>
+						<option value="37417">菏泽</option>
+						<option value="37405">东营</option>
+						
 					</optgroup>
 					<optgroup label="中型主站">
-						<option value="37413">临沂</option>
-						<option value="37406">烟台</option>
-						<option value="37414">德州</option>
-						<option value="37407">潍坊</option>
+						<option value="37412">莱芜</option>
+						<option value="37416">滨州</option>
+						<option value="37411">日照</option>
+						<option value="37410">威海</option>
+					</optgroup>
+					<optgroup label="小型主站">
 					</optgroup>
 				</select>&nbsp;&nbsp;&nbsp;
 			 <label class="control-label" for="time">选择查询时间：</label>
@@ -82,7 +94,8 @@ $(function(){
 					</optgroup>
 					
 				</select>
-		       <button id="submit" class="btn-primary" type="button">查询</button>
+		            &nbsp;&nbsp;&nbsp;
+		            <button id="submit" class="btn-primary" type="button" style="width:60px">查询</button>
 		  </div>
 	</div>
 	
@@ -97,21 +110,30 @@ $(function(){
   		 // 基于准备好的dom，初始化echarts实例
         	 var myChart1 = echarts.init(document.getElementById('chart1'));
        	  	// 指定图表的配置项和数据
-       	  	var option ={
+       	    var option ={
        	  	title: {
                text: '运维成本数据(单位：万元)'
             },
-            tooltip: {},
-           //legend: {
-            //    data:['数量']
-          // },
-            xAxis: {
-                data: []
+            tooltip: {
+            	 trigger: 'axis'
             },
-            yAxis: {},
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
+            xAxis: {
+            	 type: 'category',
+       			 boundaryGap: false,
+                 data: []
+            },
+            yAxis: {
+            	 type: 'value'
+            },
             series: [{
-                name: '数量',
-                type: 'bar',
+                type:'line',
+                stack: '总量',
                 data: []
             }]
         	  	
@@ -122,24 +144,47 @@ $(function(){
         		
              // 基于准备好的dom，初始化echarts实例
         	 var myChart2 = echarts.init(document.getElementById('chart2'));
-       	  	// 指定图表的配置项和数据
-       	  	var option ={
+       	  	// 指定图表的配置项和数据 建设成本数据(单位：万元)
+       	  	 var option ={
        	  	title: {
                text: '建设成本数据(单位：万元)'
             },
-            tooltip: {},
-             //legend: {
-            //    data:['数量']
-           // },
-            xAxis: {
-                data: []
+            tooltip: {
+            	 trigger: 'axis'
             },
-            yAxis: {},
-            series: [{
-                name: '数量',
-                type: 'bar',
-                data: []
-            }]
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
+            legend: {
+            	x:'center',
+                data:['2015','2016']
+            },
+            xAxis: {
+            	 type: 'category',
+       			 boundaryGap: false,
+                 data: ['建设成本']
+            },
+            yAxis: {
+            	 type: 'value'
+            },
+            series: [
+            {
+                name: '2016',
+                type:'line',
+                stack: '总量',
+                data: [10]
+            },
+            {
+                name: '2015',
+                type:'line',
+                stack: '总量',
+                data: [7]
+            }
+            
+            ]
         	  	
         	  	};
         		// 使用刚指定的配置项和数据显示图表。
@@ -160,6 +205,7 @@ $(function(){
 	   //运维成本数据的图表
        $('#submit').click(function(){
    		var cityName = $("#cityName").val();
+   		var legendName = $("#time").val();
        	var reqParams={'city':cityName};
    		var datalist = new Array();
    		var elementlist = new Array();
@@ -183,20 +229,29 @@ $(function(){
    		});
    		myChart1.setOption(
    		{
+   		
+   		legend: {
+            	x:'center',
+                data:legendName
+            },
    		 xAxis: {
                 data: elementlist,
-                 axisLabel:{
-                	interval:0,
-                	rotate:45
-                }
+                 
             },
             yAxis: {},
-            series: [{
-                name: '数量',
-                type: 'bar',
-                data: datalist,
-                 barWidth:30
-            }]
+            series: [
+            {
+               name: '2016',
+               type: 'line',
+               data: datalist,
+            },
+            {
+               name: '2015',
+               type: 'line',
+               data: [2,1.5,3,6.5],
+            }
+            
+            ]
    		}
 
    		);

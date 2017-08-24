@@ -18,13 +18,13 @@
 </head>
 <body>
 	<div class="row">
-		<div	id="chart1" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+		<div	id="chart1" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
 	</div>
 	<div class="row">
-		<div	id="chart2" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+		<div	id="chart2" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
 	</div>
 	<div class="row">
-		<div	id="chart3" class="col-lg-offset-2 col-lg-8" style="height:400px;"></div>
+		<div	id="chart3" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
 	</div>
 <script type="text/javascript">
 $(document).ready(function(){
