@@ -22,7 +22,7 @@ public class UserServiceTest extends SpringTestCase {
 	
 //	@Test
 //	public void selectUserInfo() {
-//		List<UserInfo> list = userService.selectUserInfo();
+//	List<UserInfo> list = userService.selectUserInfo();
 //		logger.debug("查找结果" + list);
 //	
 //	}

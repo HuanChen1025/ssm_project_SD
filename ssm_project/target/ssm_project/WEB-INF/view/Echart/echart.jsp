@@ -61,7 +61,7 @@ $(function(){
 						<option value="37414">德州</option>
 						<option value="37409">泰安</option>
 						<option value="37415">聊城</option>
-						<option value="37414">枣庄</option>
+						<option value="37404">枣庄</option>
 						<option value="37417">菏泽</option>
 						<option value="37405">东营</option>
 						
@@ -115,9 +115,28 @@ $(function(){
        	  	title: {
                text: '通信网数据(单位：个)'
             },
-            tooltip: {
-            	 trigger: 'axis'
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',
@@ -150,9 +169,28 @@ $(function(){
        	  	title: {
                text: '配电自动化系统数据(单位：个)'
             },
-            tooltip: {
-            	 trigger: 'axis'
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',
@@ -187,8 +225,27 @@ $(function(){
                text: '一次设备改造数据(单位：个)'
             },
             tooltip: {
-            	 trigger: 'axis'
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',
@@ -218,11 +275,30 @@ $(function(){
        	  	// 指定图表的配置项和数据 
      		var option ={
        	  	title: {
-               text: '线路数据(单位：个)'
+               text: '线路数据(单位：条)'
             },
-            tooltip: {
-            	 trigger: 'axis'
+              tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 条';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',

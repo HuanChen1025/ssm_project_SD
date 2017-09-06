@@ -54,28 +54,27 @@ $(function(){
 	             <div class="panel-body" ">
 	                 <label class="control-label" for="cityName">选择查询地区：</label>
 						<select class="combox" id="cityName" name="recommenderId" multiple> 
-								  <option value="">请选择...</option>
+					    <option value="">请选择...</option>
 					<optgroup label="大型主站">
 						<option value="37401">济南</option>
 						<option value="37402">青岛</option>
 						<option value="37403">淄博</option>
-						<option value="37407">潍坊</option>
+						<option value="37404">枣庄</option>
+						<option value="37405">东营</option>
 						<option value="37406">烟台</option>
+						<option value="37407">潍坊</option>
 						<option value="37408">济宁</option>
+						<option value="37409">泰安</option>
 						<option value="37413">临沂</option>
 						<option value="37414">德州</option>
-						<option value="37409">泰安</option>
 						<option value="37415">聊城</option>
-						<option value="37414">枣庄</option>
 						<option value="37417">菏泽</option>
-						<option value="37405">东营</option>
-						
 					</optgroup>
 					<optgroup label="中型主站">
+						<option value="37410">威海</option>
+						<option value="37411">日照</option>
 						<option value="37412">莱芜</option>
 						<option value="37416">滨州</option>
-						<option value="37411">日照</option>
-						<option value="37410">威海</option>
 					</optgroup>
 					<optgroup label="小型主站">
 					</optgroup>
@@ -109,12 +108,7 @@ $(function(){
         <div class="row">
     		<div id="chart4" class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" style="height:400px;"></div>
         </div>
-    
-    
-    
-    
-    
-    
+        
     </div></div>
     <script type="text/javascript">
      		// 基于准备好的dom，初始化echarts实例
@@ -124,7 +118,29 @@ $(function(){
        	  	title: {
                text: '通信网数据(单位：个)'
             },
-            tooltip: {},
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
+    		
             legend: {
                 data:[]
             },
@@ -139,17 +155,38 @@ $(function(){
             }]
         	  	
         	  	};
-        		// 使用刚指定的配置项和数据显示图表。
-        		myChart1.setOption(option);
+      		// 使用刚指定的配置项和数据显示图表。
+      		myChart1.setOption(option);
         		
-        // 基于准备好的dom，初始化echarts实例
+       		 // 基于准备好的dom，初始化echarts实例
         	 var myChart2 = echarts.init(document.getElementById('chart2'));
        	  	// 指定图表的配置项和数据
        	  	var option ={
        	  	title: {
                text: '配电自动化系统数据(单位：个)'
             },
-            tooltip: {},
+            tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
             legend: {
                 data:[]
             },
@@ -164,8 +201,8 @@ $(function(){
             }]
         	  	
         	  	};
-        		// 使用刚指定的配置项和数据显示图表。
-        		myChart2.setOption(option);
+       		// 使用刚指定的配置项和数据显示图表。
+       		myChart2.setOption(option);
         // 基于准备好的dom，初始化echarts实例
         	 var myChart3 = echarts.init(document.getElementById('chart3'));
        	  	// 指定图表的配置项和数据
@@ -173,7 +210,28 @@ $(function(){
        	  	title: {
                text: '一次设备改造数据(单位：个)'
             },
-            tooltip: {},
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
             legend: {
                 data:[]
             },
@@ -197,7 +255,28 @@ $(function(){
        	  	title: {
                text: '线路数据(单位：个)'
             },
-            tooltip: {},
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 条';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
             legend: {
                 data:[]
             },
@@ -247,9 +326,7 @@ $(function(){
   		$("input[name='test']:checked").each(function(){
   		check_val.push($(this).val());
   		});
-  		
-  		   
-  		
+
   		var cityName = $("#cityName").val();
   		//alert(cityName);
   		
@@ -260,7 +337,23 @@ $(function(){
    		var datalist3 = new Array();
    		var datalist4 = new Array();
    		var datalist5 = new Array();
+   		var datalist6 = new Array();
+   		var datalist7 = new Array();
+   		var datalist8 = new Array();
+   		var datalist9 = new Array();
+   		var datalist10 = new Array();
+   		var datalist11 = new Array();
+   		var datalist12 = new Array();
+   		var datalist13 = new Array();
+   		var datalist14 = new Array();
+   		var datalist15 = new Array();
+   		var datalist16 = new Array();
+   		var datalist17 = new Array();
    		var elementlist = new Array();
+   		//series用于显示
+ 		var series=[];
+ 		series.length = 0;  
+		console.log(series); // 输出 []，空数组，即被清空了  
    		$.ajax({
 			type: "POST",
 	        url:URL1,
@@ -270,34 +363,304 @@ $(function(){
 	        dataType:"json",
 	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
-	        var firstData = data['37401'];
-	        	for(var i=0;i<firstData.length;i++){
-  				datalist1[i]=firstData[i].value;
-  				elementlist[i]=firstData[i].element_name;
-  			}
-  			 var secondData = data['37402'];
-	        	for(var i=0;i<secondData.length;i++){
-  				datalist2[i]=secondData[i].value;
-  			}
-  			  	var threeData = data['37403'];
-	        	for(var i=0;i<threeData.length;i++){
-  				datalist3[i]=threeData[i].value;
-  			}
-  				var fourData = data['37404'];
-	        	for(var i=0;i<fourData.length;i++){
-  				datalist4[i]=fourData[i].value;
-  			}
-  			var fiveData = data['37405'];
-	        	for(var i=0;i<fiveData.length;i++){
-  				datalist5[i]=fiveData[i].value;
-  			}
+	         $("#cityName option:selected").each(function(){
+                if($(this).val()=="37401"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37401'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '济南',
+	                type: 'bar',
+	                data: datalist1,
+	                barWidth:20
+       			 });	
+	        }
+	           if($(this).val()=="37402"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37402'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	  series.push({
+		             name: '青岛',
+	                type: 'bar',
+	                data: datalist2,
+	                barWidth:20
+       			 });	
+	        }
+	            if($(this).val()=="37403"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37403'], function (index, item) {
+ 			 	 datalist3.push(item.value);
+ 			 	 if(elementlist.length<datalist3.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '淄博',
+	                type: 'bar',
+	                data: datalist3,
+	                barWidth:20
+       			 });
+ 			 	
+	        }
+	                if($(this).val()=="37404"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37404'], function (index, item) {
+ 			 	 datalist4.push(item.value);
+ 			 	 if(elementlist.length<datalist4.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '枣庄',
+	                type: 'bar',
+	                data: datalist4,
+	                barWidth:20
+       			 });
+	        }
+	                if($(this).val()=="37405"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37405'], function (index, item) {
+ 			 	 datalist5.push(item.value);
+ 			 	  if(elementlist.length<datalist5.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		            name: '东营',
+	                type: 'bar',
+	                data: datalist5,
+	                barWidth:20
+       			 });
+	      		}
+	      	    if($(this).val()=="37406"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37406'], function (index, item) {
+ 			 	 datalist6.push(item.value);
+ 			 	  if(elementlist.length<datalist6.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '烟台',
+	                type: 'bar',
+	                data: datalist6,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37407"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37407'], function (index, item) {
+ 			 	 datalist7.push(item.value);
+ 			 	  if(elementlist.length<datalist7.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '潍坊',
+	                type: 'bar',
+	                data: datalist7,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37408"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37408'], function (index, item) {
+ 			 	 datalist8.push(item.value);
+ 			 	  if(elementlist.length<datalist8.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '济宁',
+	                type: 'bar',
+	                data: datalist8,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37409"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37409'], function (index, item) {
+ 			 	 datalist9.push(item.value);
+ 			 	  if(elementlist.length<datalist9.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '泰安',
+	                type: 'bar',
+	                data: datalist9,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37410"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37410'], function (index, item) {
+ 			 	 datalist10.push(item.value);
+ 			 	  if(elementlist.length<datalist10.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '威海',
+	                type: 'bar',
+	                data: datalist10,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37411"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37411'], function (index, item) {
+ 			 	 datalist11.push(item.value);
+ 			 	  if(elementlist.length<datalist11.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist11,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37412"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37412'], function (index, item) {
+ 			 	 datalist12.push(item.value);
+ 			 	  if(elementlist.length<datalist12.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist12,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37413"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37413'], function (index, item) {
+ 			 	 datalist13.push(item.value);
+ 			 	  if(elementlist.length<datalist13.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '临沂',
+	                type: 'bar',
+	                data: datalist13,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37414"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37414'], function (index, item) {
+ 			 	 datalist14.push(item.value);
+ 			 	  if(elementlist.length<datalist14.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '德州',
+	                type: 'bar',
+	                data: datalist14,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37415"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37415'], function (index, item) {
+ 			 	 datalist15.push(item.value);
+ 			 	  if(elementlist.length<datalist15.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '聊城',
+	                type: 'bar',
+	                data: datalist15,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37416"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37416'], function (index, item) {
+ 			 	 datalist16.push(item.value);
+ 			 	  if(elementlist.length<datalist16.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '滨州',
+	                type: 'bar',
+	                data: datalist16,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37417"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37417'], function (index, item) {
+ 			 	 datalist17.push(item.value);
+ 			 	  if(elementlist.length<datalist17.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '菏泽',
+	                type: 'bar',
+	                data: datalist17,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		
+	         });
    			},
    			 error: function(e){
             	alert("查询失败:" + e);
             	        },
    		});
+   		myChart1.clear(); //clear会清除所有的
    		myChart1.setOption(
    		{
+   		title: {
+               text: '通信网数据(单位：个)'
+            },
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+				type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
    		
    		legend: {
                 data:check_name
@@ -306,40 +669,7 @@ $(function(){
                 data: elementlist
             },
             yAxis: {},
-            series: [
-            {
-                name: '济南',
-                type: 'bar',
-                data: datalist1,
-                barWidth:20
-            },
-             {
-                name: '青岛',
-                type: 'bar',
-                data: datalist2,
-                barWidth:20
-            },
-            {
-                name: '淄博',
-                type: 'bar',
-                data: datalist3,
-                barWidth:20
-            },
-             {
-                name: '枣庄',
-                type: 'bar',
-                data: datalist4,
-                barWidth:20
-            },
-            {
-                name: '东营',
-                type: 'bar',
-                data: datalist5,
-                barWidth:20
-            }
-            
-            
-            ]
+            series: series,
    		}
 
    		);
@@ -349,7 +679,7 @@ $(function(){
 		//点击后查询配电自动化系统的数据
 		$('#submit').click(function(){
    		//获取选中CheckBox后的文字
-   		  	var check_name=new Array();
+   		 var check_name=new Array();
   		$("input[name='test']:checked").each(function(){
   		check_name.push($(this).next().text());
   		});
@@ -368,7 +698,23 @@ $(function(){
    		var datalist3 = new Array();
    		var datalist4 = new Array();
    		var datalist5 = new Array();
+   		var datalist6 = new Array();
+   		var datalist7 = new Array();
+   		var datalist8 = new Array();
+   		var datalist9 = new Array();
+   		var datalist10 = new Array();
+   		var datalist11 = new Array();
+   		var datalist12 = new Array();
+   		var datalist13 = new Array();
+   		var datalist14 = new Array();
+   		var datalist15 = new Array();
+   		var datalist16 = new Array();
+   		var datalist17 = new Array();
    		var elementlist = new Array();
+   		//series用于显示
+ 		var series=[];
+ 		series.length = 0;  
+		console.log(series); // 输出 []，空数组，即被清空了  
    		$.ajax({
 			type: "POST",
 	        url:URL2,
@@ -378,34 +724,308 @@ $(function(){
 	        dataType:"json",
 	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
-	        var firstData = data['37401'];
-	        	for(var i=0;i<firstData.length;i++){
-  				datalist1[i]=firstData[i].value;
-  				elementlist[i]=firstData[i].element_name;
-  			}
-  			 var secondData = data['37402'];
-	        	for(var i=0;i<secondData.length;i++){
-  				datalist2[i]=secondData[i].value;
-  			}
-  			  	var threeData = data['37403'];
-	        	for(var i=0;i<threeData.length;i++){
-  				datalist3[i]=threeData[i].value;
-  			}
-  				var fourData = data['37404'];
-	        	for(var i=0;i<fourData.length;i++){
-  				datalist4[i]=fourData[i].value;
-  			}
-  			var fiveData = data['37405'];
-	        	for(var i=0;i<fiveData.length;i++){
-  				datalist5[i]=fiveData[i].value;
-  			}
+	         $("#cityName option:selected").each(function(){
+	         	   if($(this).val()=="37401"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37401'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '济南',
+	                type: 'bar',
+	                data: datalist1,
+	                barWidth:20
+       			 });	
+	        }
+	           if($(this).val()=="37402"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37402'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	  series.push({
+		             name: '青岛',
+	                type: 'bar',
+	                data: datalist2,
+	                barWidth:20
+       			 });	
+	        }
+	            if($(this).val()=="37403"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37403'], function (index, item) {
+ 			 	 datalist3.push(item.value);
+ 			 	 if(elementlist.length<datalist3.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '淄博',
+	                type: 'bar',
+	                data: datalist3,
+	                barWidth:20
+       			 });
+ 			 	
+	        }
+	                if($(this).val()=="37404"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37404'], function (index, item) {
+ 			 	 datalist4.push(item.value);
+ 			 	 if(elementlist.length<datalist4.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '枣庄',
+	                type: 'bar',
+	                data: datalist4,
+	                barWidth:20
+       			 });
+	        }
+	                if($(this).val()=="37405"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37405'], function (index, item) {
+ 			 	 datalist5.push(item.value);
+ 			 	  if(elementlist.length<datalist5.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		            name: '东营',
+	                type: 'bar',
+	                data: datalist5,
+	                barWidth:20
+       			 });
+	      		}
+	      	    if($(this).val()=="37406"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37406'], function (index, item) {
+ 			 	 datalist6.push(item.value);
+ 			 	  if(elementlist.length<datalist6.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '烟台',
+	                type: 'bar',
+	                data: datalist6,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37407"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37407'], function (index, item) {
+ 			 	 datalist7.push(item.value);
+ 			 	  if(elementlist.length<datalist7.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '潍坊',
+	                type: 'bar',
+	                data: datalist7,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37408"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37408'], function (index, item) {
+ 			 	 datalist8.push(item.value);
+ 			 	  if(elementlist.length<datalist8.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '济宁',
+	                type: 'bar',
+	                data: datalist8,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37409"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37409'], function (index, item) {
+ 			 	 datalist9.push(item.value);
+ 			 	  if(elementlist.length<datalist9.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '泰安',
+	                type: 'bar',
+	                data: datalist9,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37410"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37410'], function (index, item) {
+ 			 	 datalist10.push(item.value);
+ 			 	  if(elementlist.length<datalist10.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '威海',
+	                type: 'bar',
+	                data: datalist10,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37411"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37411'], function (index, item) {
+ 			 	 datalist11.push(item.value);
+ 			 	  if(elementlist.length<datalist11.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist11,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37412"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37412'], function (index, item) {
+ 			 	 datalist12.push(item.value);
+ 			 	  if(elementlist.length<datalist12.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist12,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37413"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37413'], function (index, item) {
+ 			 	 datalist13.push(item.value);
+ 			 	  if(elementlist.length<datalist13.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '临沂',
+	                type: 'bar',
+	                data: datalist13,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37414"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37414'], function (index, item) {
+ 			 	 datalist14.push(item.value);
+ 			 	  if(elementlist.length<datalist14.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '德州',
+	                type: 'bar',
+	                data: datalist14,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37415"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37415'], function (index, item) {
+ 			 	 datalist15.push(item.value);
+ 			 	  if(elementlist.length<datalist15.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '聊城',
+	                type: 'bar',
+	                data: datalist15,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37416"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37416'], function (index, item) {
+ 			 	 datalist16.push(item.value);
+ 			 	  if(elementlist.length<datalist16.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '滨州',
+	                type: 'bar',
+	                data: datalist16,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37417"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37417'], function (index, item) {
+ 			 	 datalist17.push(item.value);
+ 			 	  if(elementlist.length<datalist17.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '菏泽',
+	                type: 'bar',
+	                data: datalist17,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	         
+	         
+	         
+	         });
+	        
+	       
    			},
    			 error: function(e){
             	alert("查询失败:" + e);
             	        },
    		});
+   		myChart2.clear();
    		myChart2.setOption(
    		{
+   		 		title: {
+               text: '配电自动化系统数据(单位：个)'
+            },
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
    		
    		legend: {
                 data:check_name
@@ -418,40 +1038,7 @@ $(function(){
                 }
             },
             yAxis: {},
-            series: [
-            {
-                name: '济南',
-                type: 'bar',
-                data: datalist1,
-                barWidth:20
-            },
-             {
-                name: '青岛',
-                type: 'bar',
-                data: datalist2,
-                barWidth:20
-            },
-            {
-                name: '淄博',
-                type: 'bar',
-                data: datalist3,
-                barWidth:20
-            },
-             {
-                name: '枣庄',
-                type: 'bar',
-                data: datalist4,
-                barWidth:20
-            },
-            {
-                name: '东营',
-                type: 'bar',
-                data: datalist5,
-                barWidth:20
-            }
-            
-            
-            ]
+            series: series,
    		}
 
    		);
@@ -479,7 +1066,23 @@ $(function(){
    		var datalist3 = new Array();
    		var datalist4 = new Array();
    		var datalist5 = new Array();
+   		var datalist6 = new Array();
+   		var datalist7 = new Array();
+   		var datalist8 = new Array();
+   		var datalist9 = new Array();
+   		var datalist10 = new Array();
+   		var datalist11 = new Array();
+   		var datalist12 = new Array();
+   		var datalist13 = new Array();
+   		var datalist14 = new Array();
+   		var datalist15 = new Array();
+   		var datalist16 = new Array();
+   		var datalist17 = new Array();
    		var elementlist = new Array();
+   		//series用于显示
+ 		var series=[];
+ 		series.length = 0;  
+		console.log(series); // 输出 []，空数组，即被清空了  
    		$.ajax({
 			type: "POST",
 	        url:URL3,
@@ -489,34 +1092,306 @@ $(function(){
 	        dataType:"json",
 	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
-	        var firstData = data['37401'];
-	        	for(var i=0;i<firstData.length;i++){
-  				datalist1[i]=firstData[i].value;
-  				elementlist[i]=firstData[i].element_name;
-  			}
-  			 var secondData = data['37402'];
-	        	for(var i=0;i<secondData.length;i++){
-  				datalist2[i]=secondData[i].value;
-  			}
-  			  	var threeData = data['37403'];
-	        	for(var i=0;i<threeData.length;i++){
-  				datalist3[i]=threeData[i].value;
-  			}
-  				var fourData = data['37404'];
-	        	for(var i=0;i<fourData.length;i++){
-  				datalist4[i]=fourData[i].value;
-  			}
-  			var fiveData = data['37405'];
-	        	for(var i=0;i<fiveData.length;i++){
-  				datalist5[i]=fiveData[i].value;
-  			}
+	   $("#cityName option:selected").each(function(){
+	         	   if($(this).val()=="37401"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37401'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '济南',
+	                type: 'bar',
+	                data: datalist1,
+	                barWidth:20
+       			 });	
+	        }
+	           if($(this).val()=="37402"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37402'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	  series.push({
+		             name: '青岛',
+	                type: 'bar',
+	                data: datalist2,
+	                barWidth:20
+       			 });	
+	        }
+	            if($(this).val()=="37403"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37403'], function (index, item) {
+ 			 	 datalist3.push(item.value);
+ 			 	 if(elementlist.length<datalist3.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '淄博',
+	                type: 'bar',
+	                data: datalist3,
+	                barWidth:20
+       			 });
+ 			 	
+	        }
+	                if($(this).val()=="37404"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37404'], function (index, item) {
+ 			 	 datalist4.push(item.value);
+ 			 	 if(elementlist.length<datalist4.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '枣庄',
+	                type: 'bar',
+	                data: datalist4,
+	                barWidth:20
+       			 });
+	        }
+	                if($(this).val()=="37405"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37405'], function (index, item) {
+ 			 	 datalist5.push(item.value);
+ 			 	  if(elementlist.length<datalist5.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		            name: '东营',
+	                type: 'bar',
+	                data: datalist5,
+	                barWidth:20
+       			 });
+	      		}
+	      	    if($(this).val()=="37406"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37406'], function (index, item) {
+ 			 	 datalist6.push(item.value);
+ 			 	  if(elementlist.length<datalist6.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '烟台',
+	                type: 'bar',
+	                data: datalist6,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37407"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37407'], function (index, item) {
+ 			 	 datalist7.push(item.value);
+ 			 	  if(elementlist.length<datalist7.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '潍坊',
+	                type: 'bar',
+	                data: datalist7,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37408"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37408'], function (index, item) {
+ 			 	 datalist8.push(item.value);
+ 			 	  if(elementlist.length<datalist8.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '济宁',
+	                type: 'bar',
+	                data: datalist8,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37409"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37409'], function (index, item) {
+ 			 	 datalist9.push(item.value);
+ 			 	  if(elementlist.length<datalist9.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '泰安',
+	                type: 'bar',
+	                data: datalist9,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37410"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37410'], function (index, item) {
+ 			 	 datalist10.push(item.value);
+ 			 	  if(elementlist.length<datalist10.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '威海',
+	                type: 'bar',
+	                data: datalist10,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37411"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37411'], function (index, item) {
+ 			 	 datalist11.push(item.value);
+ 			 	  if(elementlist.length<datalist11.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist11,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37412"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37412'], function (index, item) {
+ 			 	 datalist12.push(item.value);
+ 			 	  if(elementlist.length<datalist12.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist12,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37413"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37413'], function (index, item) {
+ 			 	 datalist13.push(item.value);
+ 			 	  if(elementlist.length<datalist13.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '临沂',
+	                type: 'bar',
+	                data: datalist13,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37414"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37414'], function (index, item) {
+ 			 	 datalist14.push(item.value);
+ 			 	  if(elementlist.length<datalist14.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '德州',
+	                type: 'bar',
+	                data: datalist14,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37415"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37415'], function (index, item) {
+ 			 	 datalist15.push(item.value);
+ 			 	  if(elementlist.length<datalist15.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '聊城',
+	                type: 'bar',
+	                data: datalist15,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37416"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37416'], function (index, item) {
+ 			 	 datalist16.push(item.value);
+ 			 	  if(elementlist.length<datalist16.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '滨州',
+	                type: 'bar',
+	                data: datalist16,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37417"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37417'], function (index, item) {
+ 			 	 datalist17.push(item.value);
+ 			 	  if(elementlist.length<datalist17.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '菏泽',
+	                type: 'bar',
+	                data: datalist17,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	         
+	         
+	         
+	         });
    			},
    			 error: function(e){
             	alert("查询失败:" + e);
             	        },
    		});
+   		myChart3.clear();
    		myChart3.setOption(
    		{
+   		 		title: {
+               text: '一次设备改造数据(单位：个)'
+            },
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
    		
    		legend: {
                 data:check_name
@@ -525,40 +1400,7 @@ $(function(){
                 data: elementlist
             },
             yAxis: {},
-            series: [
-            {
-                name: '济南',
-                type: 'bar',
-                data: datalist1,
-                barWidth:20
-            },
-             {
-                name: '青岛',
-                type: 'bar',
-                data: datalist2,
-                barWidth:20
-            },
-            {
-                name: '淄博',
-                type: 'bar',
-                data: datalist3,
-                barWidth:20
-            },
-             {
-                name: '枣庄',
-                type: 'bar',
-                data: datalist4,
-                barWidth:20
-            },
-            {
-                name: '东营',
-                type: 'bar',
-                data: datalist5,
-                barWidth:20
-            }
-            
-            
-            ]
+            series: series,
    		}
 
    		);
@@ -587,7 +1429,23 @@ $(function(){
    		var datalist3 = new Array();
    		var datalist4 = new Array();
    		var datalist5 = new Array();
+   		var datalist6 = new Array();
+   		var datalist7 = new Array();
+   		var datalist8 = new Array();
+   		var datalist9 = new Array();
+   		var datalist10 = new Array();
+   		var datalist11 = new Array();
+   		var datalist12 = new Array();
+   		var datalist13 = new Array();
+   		var datalist14 = new Array();
+   		var datalist15 = new Array();
+   		var datalist16 = new Array();
+   		var datalist17 = new Array();
    		var elementlist = new Array();
+   		//series用于显示
+ 		var series=[];
+ 		series.length = 0;  
+		console.log(series); // 输出 []，空数组，即被清空了  
    		$.ajax({
 			type: "POST",
 	        url:URL4,
@@ -597,34 +1455,306 @@ $(function(){
 	        dataType:"json",
 	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
-	        var firstData = data['37401'];
-	        	for(var i=0;i<firstData.length;i++){
-  				datalist1[i]=firstData[i].value;
-  				elementlist[i]=firstData[i].element_name;
-  			}
-  			 var secondData = data['37402'];
-	        	for(var i=0;i<secondData.length;i++){
-  				datalist2[i]=secondData[i].value;
-  			}
-  			  	var threeData = data['37403'];
-	        	for(var i=0;i<threeData.length;i++){
-  				datalist3[i]=threeData[i].value;
-  			}
-  				var fourData = data['37404'];
-	        	for(var i=0;i<fourData.length;i++){
-  				datalist4[i]=fourData[i].value;
-  			}
-  			var fiveData = data['37405'];
-	        	for(var i=0;i<fiveData.length;i++){
-  				datalist5[i]=fiveData[i].value;
-  			}
+	         $("#cityName option:selected").each(function(){
+	         	   if($(this).val()=="37401"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37401'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '济南',
+	                type: 'bar',
+	                data: datalist1,
+	                barWidth:20
+       			 });	
+	        }
+	           if($(this).val()=="37402"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37402'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	  series.push({
+		             name: '青岛',
+	                type: 'bar',
+	                data: datalist2,
+	                barWidth:20
+       			 });	
+	        }
+	            if($(this).val()=="37403"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37403'], function (index, item) {
+ 			 	 datalist3.push(item.value);
+ 			 	 if(elementlist.length<datalist3.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '淄博',
+	                type: 'bar',
+	                data: datalist3,
+	                barWidth:20
+       			 });
+ 			 	
+	        }
+	                if($(this).val()=="37404"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37404'], function (index, item) {
+ 			 	 datalist4.push(item.value);
+ 			 	 if(elementlist.length<datalist4.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	 series.push({
+		            name: '枣庄',
+	                type: 'bar',
+	                data: datalist4,
+	                barWidth:20
+       			 });
+	        }
+	                if($(this).val()=="37405"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37405'], function (index, item) {
+ 			 	 datalist5.push(item.value);
+ 			 	  if(elementlist.length<datalist5.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		            name: '东营',
+	                type: 'bar',
+	                data: datalist5,
+	                barWidth:20
+       			 });
+	      		}
+	      	    if($(this).val()=="37406"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37406'], function (index, item) {
+ 			 	 datalist6.push(item.value);
+ 			 	  if(elementlist.length<datalist6.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '烟台',
+	                type: 'bar',
+	                data: datalist6,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37407"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37407'], function (index, item) {
+ 			 	 datalist7.push(item.value);
+ 			 	  if(elementlist.length<datalist7.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '潍坊',
+	                type: 'bar',
+	                data: datalist7,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37408"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37408'], function (index, item) {
+ 			 	 datalist8.push(item.value);
+ 			 	  if(elementlist.length<datalist8.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '济宁',
+	                type: 'bar',
+	                data: datalist8,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37409"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37409'], function (index, item) {
+ 			 	 datalist9.push(item.value);
+ 			 	  if(elementlist.length<datalist9.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '泰安',
+	                type: 'bar',
+	                data: datalist9,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37410"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37410'], function (index, item) {
+ 			 	 datalist10.push(item.value);
+ 			 	  if(elementlist.length<datalist10.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '威海',
+	                type: 'bar',
+	                data: datalist10,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37411"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37411'], function (index, item) {
+ 			 	 datalist11.push(item.value);
+ 			 	  if(elementlist.length<datalist11.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist11,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37412"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37412'], function (index, item) {
+ 			 	 datalist12.push(item.value);
+ 			 	  if(elementlist.length<datalist12.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '日照',
+	                type: 'bar',
+	                data: datalist12,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37413"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37413'], function (index, item) {
+ 			 	 datalist13.push(item.value);
+ 			 	  if(elementlist.length<datalist13.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '临沂',
+	                type: 'bar',
+	                data: datalist13,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37414"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37414'], function (index, item) {
+ 			 	 datalist14.push(item.value);
+ 			 	  if(elementlist.length<datalist14.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '德州',
+	                type: 'bar',
+	                data: datalist14,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37415"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37415'], function (index, item) {
+ 			 	 datalist15.push(item.value);
+ 			 	  if(elementlist.length<datalist15.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '聊城',
+	                type: 'bar',
+	                data: datalist15,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37416"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37416'], function (index, item) {
+ 			 	 datalist16.push(item.value);
+ 			 	  if(elementlist.length<datalist16.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '滨州',
+	                type: 'bar',
+	                data: datalist16,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	      		if($(this).val()=="37417"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['37417'], function (index, item) {
+ 			 	 datalist17.push(item.value);
+ 			 	  if(elementlist.length<datalist17.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	 
+ 			 	});
+ 			 	series.push({
+		            name: '菏泽',
+	                type: 'bar',
+	                data: datalist17,
+	                barWidth:20
+       			 });
+ 			 	
+	      		}
+	         
+	         
+	         
+	         });
    			},
    			 error: function(e){
             	alert("查询失败:" + e);
             	        },
    		});
+   		myChart4.clear();
    		myChart4.setOption(
    		{
+   		 		title: {
+               text: '线路数据(单位：个)'
+            },
+           tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          },
    		
    		legend: {
                 data:check_name
@@ -633,40 +1763,7 @@ $(function(){
                 data: elementlist
             },
             yAxis: {},
-            series: [
-            {
-                name: '济南',
-                type: 'bar',
-                data: datalist1,
-                barWidth:20
-            },
-             {
-                name: '青岛',
-                type: 'bar',
-                data: datalist2,
-                barWidth:20
-            },
-            {
-                name: '淄博',
-                type: 'bar',
-                data: datalist3,
-                barWidth:20
-            },
-             {
-                name: '枣庄',
-                type: 'bar',
-                data: datalist4,
-                barWidth:20
-            },
-            {
-                name: '东营',
-                type: 'bar',
-                data: datalist5,
-                barWidth:20
-            }
-            
-            
-            ]
+            series: series,
    		}
 
    		);

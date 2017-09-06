@@ -116,8 +116,27 @@ $(function(){
                text: '社会效益数据(单位：万元)'
             },
             tooltip: {
-            	 trigger: 'axis'
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 万元';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',
@@ -150,9 +169,28 @@ $(function(){
        	  	title: {
                text: '企业效益数据(单位：万元)'
             },
-            tooltip: {
-            	 trigger: 'axis'
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 万元';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
             },
+          	},
             grid: {
        		 left: '3%',
              right: '4%',

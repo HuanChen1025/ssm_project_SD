@@ -32,6 +32,11 @@
         	
         	}
         	
+        	#leftMeun{
+        	position: fixed; 
+        	
+        	}
+        	
         
         </style>
         <script>
@@ -90,12 +95,13 @@
                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" xiaoyi" target="mainframe">应用效益</a></div>
                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" xiaoyiContract" target="mainframe">应用效益对比分析</a></div>
                 <div class="meun-item"  ><img src="../static/images/icon_user_grey.png"><a href=" bootstrapTest1" target="mainframe">成效计算公式</a></div>
-                <div class="meun-title">综合统计分析</div>
-                <div class="meun-item" ><img src="../static/images/icon_house_grey.png"><a href=" TrcbLine" target="mainframe">投入成本分析</a></div>
-				<div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href=" JsmsLine" target="mainframe">配电自动化关联分析</a></div>
+                <div class="meun-title">投入产出关联分析</div>
                 <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href=" image" target="mainframe">建设模式可视化</a></div>
-                <div class="meun-item " ><img src="../static/images/icon_card_grey.png"><a href=" map" target="mainframe">综合结论</a></div>
-              
+                <div class="meun-item" ><img src="../static/images/icon_house_grey.png"><a href=" TrcbLine" target="mainframe">成本分析</a></div>
+				<div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href=" JsmsLine" target="mainframe">效益分析</a></div>
+                <!-- <div class="meun-item " ><img src="../static/images/icon_card_grey.png"><a href=" map" target="mainframe">综合结论</a></div> -->
+                <div class="meun-title">关联分析</div>
+                <div class="meun-item" ><img src="../static/images/icon_card_grey.png"><a href="compute" target="mainframe">投入产出比计算</a></div>
             	
             </div>
             <!-- 右侧具体内容栏目 -->

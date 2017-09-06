@@ -10,19 +10,19 @@
     </select> 
     <!-- 查找通信网数据 -->
     <select id="selectTXW"  resultType="com.lin.domain.ResultData" >
-    select element_name, value from T_CXFX_MAIN_CQU  where model_name='通信网' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+    select element_name, value from data_view  where model_name='通信网' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找配电自动化系统数据 -->
     <select id="selectPDZDHXT" resultType="com.lin.domain.ResultData">
-     select element_name, value from T_CXFX_MAIN_CQU  where model_name='配电自动化系统' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+     select element_name, value from data_view  where model_name='配电自动化系统' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找一次设备改造数据 -->
     <select id="selectYCSBGZ" resultType="com.lin.domain.ResultData">
-     select element_name, value from T_CXFX_MAIN_CQU  where model_name='一次设备改造' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+     select element_name, value from data_view  where model_name='一次设备改造' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找线路数据 -->
     <select id="selectXL" resultType="com.lin.domain.ResultData">
-     select element_name, value from T_CXFX_MAIN_CQU  where model_name='线路' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+     select element_name, value from data_view  where model_name='线路' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
     </select>
 
 </mapper>

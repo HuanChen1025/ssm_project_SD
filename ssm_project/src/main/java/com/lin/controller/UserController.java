@@ -192,5 +192,15 @@ public class UserController extends BaseController {
     	
     }
     
+    /**
+	 *  显示运维成本数据对比查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/compute")
+	public String compute(){
+		return "Echart/compute";
+	}
+    
 
 }

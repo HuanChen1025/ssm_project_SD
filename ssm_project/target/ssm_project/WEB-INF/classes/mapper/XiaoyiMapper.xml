@@ -4,20 +4,124 @@
 <mapper namespace="com.lin.dao.TouziDao">
 <!-- 社会效益 -->
 	<select id="selectSHXY" resultType="com.lin.domain.ResultData">
-		select element_name, value from T_CXFX_MAIN_CQU  where model_name='社会效益' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+		select element_name, value from data_view  where model_name='社会效益' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
 	</select>
 <!-- 企业效益 -->
 	<select id="selectQYXY" resultType="com.lin.domain.ResultData">
-		select element_name, value from T_CXFX_MAIN_CQU  where model_name='企业效益' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+		select element_name, value from data_view  where model_name='企业效益' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
 	</select>
 	
 	
 <!-- 运维成本 -->
 <select id="selectYWCB" resultType="com.lin.domain.ResultData">
-select element_name, value from T_CXFX_MAIN_CQU  where model_name='运维成本' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+select element_name, value from data_view  where model_name='运行成本' and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
 </select>
 
-<!-- 建设成本 -->
+
+<!-- 类别1的效益数据查询 -->
+<select id="select_benefit_class1" resultType="com.lin.domain.ValueNumber">
+select value from data_view where element_name=#{searchName,jdbcType=VARCHAR} and orgno in('37402','37403','37407','37406','37413') order by orgno
+</select>
+
+<!-- 类别2的效益数据查询 -->
+<select id="select_benefit_class2" resultType="com.lin.domain.ValueNumber">
+select value from data_view where element_name=#{searchName,jdbcType=VARCHAR} and orgno in('37410','37411','37412','37416') order by orgno
+</select>
+
+<!-- 类别3的效益数据查询 -->
+<select id="select_benefit_class3" resultType="com.lin.domain.ValueNumber">
+select value from data_view where element_name=#{searchName,jdbcType=VARCHAR} and orgno in('37401','37404','37405','37408','37409','37414','37415','37417') order by orgno
+</select>
+
+<!-- 类别1的投入产出比数据 -->
+<select id="benifit_cost_class1" resultType="com.lin.domain.ValueNumber">
+ select trunc(b.benefit/c.cost,3) as value from (
+ select orgno, sum(value) as benefit from  data_view
+where element_name in
+<foreach collection="benifit" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37402','37403','37407','37406','37413')
+ group by orgno
+ order by orgno
+ ) b,
+ 
+ (select orgno, sum(value) as cost from  data_view
+where element_name in
+<foreach collection="cost" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37402','37403','37407','37406','37413')
+ group by orgno
+ order by orgno) c
+ 
+ where b.orgno=c.orgno
+
+</select>
+<!-- 投入产出比查询的数据，柱状图显示，按类别 -->
+<select id="benifit_cost_select" resultType="com.lin.domain.ValueNumber">
+
+select  value from data_view  where element_name in
+<foreach collection="selectElement" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno=#{selectArea,jdbcType=VARCHAR} order by element_name
+
+</select>
+
+
+
+<!-- 类别2的投入产出比数据 -->
+<select id="benifit_cost_class2" resultType="com.lin.domain.ValueNumber">
+ select trunc(b.benefit/c.cost,3) as value from (
+ select orgno, sum(value) as benefit from  data_view
+where element_name in
+<foreach collection="benifit" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37410','37411','37412','37416')
+ group by orgno
+ order by orgno
+ ) b,
+ 
+ (select orgno, sum(value) as cost from  data_view
+where element_name in
+<foreach collection="cost" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37410','37411','37412','37416')
+ group by orgno
+ order by orgno) c
+ 
+ where b.orgno=c.orgno
+
+</select>
+
+<!-- 类别3的投入产出比数据 -->
+<select id="benifit_cost_class3" resultType="com.lin.domain.ValueNumber">
+ select trunc(b.benefit/c.cost,3) as value from (
+ select orgno, sum(value) as benefit from  data_view
+where element_name in
+<foreach collection="benifit" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37401','37404','37405','37408','37409','37414','37415','37417')
+ group by orgno
+ order by orgno
+ ) b,
+ 
+ (select orgno, sum(value) as cost from  data_view
+where element_name in
+<foreach collection="cost" item="item" index="index" open="(" separator="," close=")">
+	#{item,jdbcType=VARCHAR}
+</foreach>
+and orgno in('37401','37404','37405','37408','37409','37414','37415','37417')
+ group by orgno
+ order by orgno) c
+ 
+ where b.orgno=c.orgno
+
+</select>
 	
 	
 </mapper>

@@ -26,7 +26,12 @@ public class GuimoServiceTest extends SpringTestCase{
 //		 logger.debug("查找结果" + list);
 //		
 //	}
-//	
+//	@Test
+//	public void selectD() {
+//		 System.out.println(1);
+//		
+//	}
+	
 //	
 //	
 //	//建设规模之通信网
