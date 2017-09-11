@@ -344,10 +344,11 @@ $(function(){
    		$('#submit').click(function(){
    		var cityName  =  $("#cityName").val();
    		var legendName = $("#time").val();
-   		var time = $("#time").val();
-   		alert(time);
-       	var reqParams={'city':cityName};
-   		var datalist = new Array();
+   		//var time = $("#time").val();
+       	var reqParams={'city':cityName,'searchTime':legendName};
+	    var datalist1 = new Array();
+	    var datalist2 = new Array();
+	    var series=[];
    		var elementlist = new Array();
    		$.ajax({
 			type: "POST",
@@ -356,21 +357,80 @@ $(function(){
 	        data: reqParams,
 	        async:false,
 	        dataType:"json",
+	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
 			
-			for(var i=0;i<data.length;i++){
-  				datalist[i]=data[i].value;
-  				elementlist[i]=data[i].element_name;
-  			}
-  			
-  			
+			  $("#time option:selected").each(function(){
+			    if($(this).val()=="2015"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2015'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2015',
+	                type: 'line',
+	                data: datalist1,
+	              
+       			 });	
+	            }
+	            if($(this).val()=="2016"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2016'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2016',
+	                type: 'line',
+	                data: datalist2,
+	              
+       			 });	
+	            }
+			  
+			  
+			  });
+
    			},
    			 	error: function(e){
             	  alert("查询失败:" + e);
             	 },
    		});
+   		myChart1.clear();//清除echarts加载的缓存
    		myChart1.setOption(
    		{
+   		    title: {
+               text: '通信网数据(单位：个)'
+            },
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          	},
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
    		
    		legend: {
             	x:'center',
@@ -380,19 +440,10 @@ $(function(){
    		 xAxis: {
                 data: elementlist,
             },
-            yAxis: {},
-            series: [
-            {
-               name: '2016',
-                type: 'line',
-                data: datalist,
+            yAxis: {
+            	type: 'value'
             },
-            
-            
-            
-            ]
-            
-            
+            series: series,
    		}
 
    		);
@@ -403,8 +454,10 @@ $(function(){
    		$('#submit').click(function(){
    		var cityName = $("#cityName").val();
    		var legendName = $("#time").val();
-       	var reqParams={'city':cityName};
-   		var datalist = new Array();
+       	var reqParams={'city':cityName,'searchTime':legendName};
+   		var datalist1 = new Array();
+	    var datalist2 = new Array();
+	    var series=[];
    		var elementlist = new Array();
    		$.ajax({
 			type: "POST",
@@ -413,19 +466,79 @@ $(function(){
 	        data: reqParams,
 	        async:false,
 	        dataType:"json",
+	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
-			
-			for(var i=0;i<data.length;i++){
-  				datalist[i]=data[i].value;
-  				elementlist[i]=data[i].element_name;
-  			}
+		  $("#time option:selected").each(function(){
+			    if($(this).val()=="2015"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2015'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2015',
+	                type: 'line',
+	                data: datalist1,
+	              
+       			 });	
+	            }
+	            if($(this).val()=="2016"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2016'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2016',
+	                type: 'line',
+	                data: datalist2,
+	              
+       			 });	
+	            }
+			  
+			  
+			  });
    			},
-   			 	error: function(e){
-            	           alert("查询失败:" + e);
-            	        },
+ 			 error: function(e){
+          	          alert("查询失败:" + e);
+          	     },
    		});
+   		myChart2.clear();//清除echarts加载的缓存
    		myChart2.setOption(
    		{
+   		  title: {
+               text: '配电自动化系统数据(单位：个)'
+            },
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          	},
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
+   		
    		legend: {
             	x:'center',
                 data:legendName
@@ -439,20 +552,7 @@ $(function(){
                 }
             },
             yAxis: {},
-            series: [
-            {
-                name: '2016',
-                type: 'line',
-                data: datalist,
-            },
-             {
-                name: '2015',
-                type: 'line',
-                data: [150,2000,0,10,100,400,0,900,8],
-            }
-            
-            
-            ]
+            series: series,
    		}
 
    		);
@@ -462,8 +562,10 @@ $(function(){
    		$('#submit').click(function(){
    		var cityName = $("#cityName").val();
    		var legendName = $("#time").val();
-       	var reqParams={'city':cityName};
-   		var datalist = new Array();
+       	var reqParams={'city':cityName,'searchTime':legendName};
+   		var datalist1 = new Array();
+	    var datalist2 = new Array();
+	    var series=[];
    		var elementlist = new Array();
    		$.ajax({
 			type: "POST",
@@ -472,20 +574,79 @@ $(function(){
 	        data: reqParams,
 	        async:false,
 	        dataType:"json",
+	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
 			
-			for(var i=0;i<data.length;i++){
-  				datalist[i]=data[i].value;
-  				elementlist[i]=data[i].element_name;
-  			}
+			 $("#time option:selected").each(function(){
+			    if($(this).val()=="2015"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2015'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2015',
+	                 type: 'line',
+	                 data: datalist1,
+	              
+       			 });	
+	            }
+	            if($(this).val()=="2016"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2016'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2016',
+	                 type: 'line',
+	                 data: datalist2,
+	              
+       			 });	
+	            }
+			  
+			  
+			  });
    			},
    			 	error: function(e){
             	           alert("查询失败:" + e);
             	        },
    		});
+   		myChart3.clear();//清除echarts加载的缓存
    		myChart3.setOption(
    		{
-   		
+   		 title: {
+               text: '一次设备改造数据(单位：个)'
+            },
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 个';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          	},
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
    		legend: {
             	x:'center',
                 data:legendName
@@ -494,19 +655,7 @@ $(function(){
                 data: elementlist
             },
             yAxis: {},
-            series: [
-            {
-                name: '2016',
-               type: 'line',
-               data: datalist,
-            },
-             {
-                name: '2015',
-                type: 'line',
-                data: [190,20,600,200],
-            }
-            
-            ]
+            series: series,
    		}
 
    		);
@@ -516,9 +665,11 @@ $(function(){
    		$('#submit').click(function(){
    		var cityName = $("#cityName").val();
    		var legendName = $("#time").val();
-       	var reqParams={'city':cityName};
-   		var datalist4 = new Array();
-   		var elementlist4 = new Array();
+       	var reqParams={'city':cityName,'searchTime':legendName};
+   		var datalist1 = new Array();
+	    var datalist2 = new Array();
+	    var series=[];
+   		var elementlist = new Array();
    		$.ajax({
 			type: "POST",
 	        url:URL4,
@@ -526,42 +677,91 @@ $(function(){
 	        data: reqParams,
 	        async:false,
 	        dataType:"json",
+	        traditional:true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
 	        success: function(data){
 			
-			for(var i=0;i<data.length;i++){
-  				datalist4[i]=data[i].value;
-  				elementlist4[i]=data[i].element_name;
-  			}
+			$("#time option:selected").each(function(){
+			    if($(this).val()=="2015"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2015'], function (index, item) {
+ 			 	 datalist1.push(item.value);
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2015',
+	                type: 'line',
+	                data: datalist1,
+	              
+       			 });	
+	            }
+	            if($(this).val()=="2016"){
+                //data后面直接加数字是不可行的，必须采用[]的形式来替代
+        		$.each(data['2016'], function (index, item) {
+ 			 	 datalist2.push(item.value);
+ 			 	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+ 			 	});
+ 			 	series.push({
+		             name: '2016',
+	                type: 'line',
+	                data: datalist2,
+	              
+       			 });	
+	            }
+			  
+			  
+			  });
    			},
    			 	error: function(e){
             	           alert("查询失败:" + e);
             	        },
    		});
+   		myChart4.clear();
    		myChart4.setOption(
    		{
+   		 title: {
+               text: '线路数据(单位：条)'
+            },
+             tooltip: {
+              trigger: 'axis', 
+              formatter: function(datas) 
+              {
+                  var res = datas[0].name + '<br/>', val;
+                  for(var i = 0, length = datas.length; i < length; i++) {
+                        val = (datas[i].value) + ' 条';
+                        res += datas[i].seriesName + '：' + val + '<br/>';
+                    }
+                    return res;
+               },
+			    axisPointer: {
+					type: 'cross'
+				},
+			  backgroundColor: '#7FFFD4',
+              borderWidth: 1,
+              borderColor: '#ccc',
+              padding: 10,
+              textStyle: {
+              color: '#000'
+            },
+          	},
+            grid: {
+       		 left: '3%',
+             right: '4%',
+             bottom: '5%',
+             containLabel: true
+            },
+   		
    		
    		legend: {
             	x:'center',
                 data:legendName
             },
    		 xAxis: {
-                data: elementlist4,
+                data: elementlist,
                 
             },
             yAxis: {},
-            series: [
-            {
-                name: '2016',
-                type: 'line',
-                data: datalist4,
-            },
-             {
-                name: '2015',
-                type: 'line',
-                data: [300,800,100,200],
-            }
-            
-            ]
+            series: series,
    		});
    		});
     </script>

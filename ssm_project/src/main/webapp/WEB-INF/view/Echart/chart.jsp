@@ -81,6 +81,7 @@ $(function(){
 		                &nbsp;&nbsp;&nbsp;
 		                <label class="control-label" for="time">选择查询时间：</label>
 						<select class="combox" id="time" name="tagId" > 
+						 <option value="">请选择...</option>
 							<optgroup label="查询时间">
 								<option value="2012">2012</option>
 								<option value="2013">2013</option>
@@ -330,7 +331,7 @@ $(function(){
   		var time = $("#time").val();
   		
    		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName};
+       	var reqParams={'city':cityName,'time':time};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();
@@ -691,7 +692,8 @@ $(function(){
   		});
   		var cityName = $("#cityName").val();
    		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName};
+   		var time = $("#time").val();
+       	var reqParams={'city':cityName,'time':time};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();
@@ -1058,8 +1060,8 @@ $(function(){
   		check_val.push($(this).val());
   		});
   		var cityName = $("#cityName").val();
-   		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName};
+   		var time = $("#time").val();
+       	var reqParams={'city':cityName,'time':time};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();
@@ -1421,8 +1423,8 @@ $(function(){
   		});
   		
   		var cityName = $("#cityName").val();
-   		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName};
+   		var time = $("#time").val();
+       	var reqParams={'city':cityName,'time':time};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();

@@ -21,28 +21,28 @@ public class GuimoServiceImpl implements GuimoService {
 	}
 
 	@Override
-	public List<ResultData> selectTXW(String area) {
+	public List<ResultData> selectTXW(String area,String time) {
 		
-		List<ResultData> list = guimoDao.selectTXW(area);
+		List<ResultData> list = guimoDao.selectTXW(area,time);
 		return list;
 	}
 
 	@Override
-	public List<ResultData> selectPDZDHXT(String city) {
+	public List<ResultData> selectPDZDHXT(String city,String time) {
 		
-		List<ResultData> list = guimoDao.selectPDZDHXT(city);
+		List<ResultData> list = guimoDao.selectPDZDHXT(city,time);
 		return list;
 	}
 
 	@Override
-	public List<ResultData> selectYCSBGZ(String city) {
-		List<ResultData> list = guimoDao.selectYCSBGZ(city);
+	public List<ResultData> selectYCSBGZ(String city,String time) {
+		List<ResultData> list = guimoDao.selectYCSBGZ(city,time);
 		return list;
 	}
 
 	@Override
-	public List<ResultData> selectXL(String city) {
-		List<ResultData> list = guimoDao.selectXL(city);
+	public List<ResultData> selectXL(String city,String time) {
+		List<ResultData> list = guimoDao.selectXL(city,time);
 		return list;
 	}
 

@@ -39,7 +39,7 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery1(long[] city){
+	public String contrastQuery1(long[] city,String time){
 		logger.info("请求通信网数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -51,7 +51,7 @@ public class ChartController  extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = guimoService.selectTXW(s);
+					List<ResultData> list = guimoService.selectTXW(s,time);
 					json.put(s, list);
 				}
 			
@@ -76,7 +76,7 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery2.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery2(long[] city){
+	public String contrastQuery2(long[] city,String time){
 		logger.info("请求配电自动化数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -88,7 +88,7 @@ public class ChartController  extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = guimoService.selectPDZDHXT(s);
+					List<ResultData> list = guimoService.selectPDZDHXT(s,time);
 					json.put(s, list);
 				}
 			
@@ -112,7 +112,7 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery3.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery3(long[] city){
+	public String contrastQuery3(long[] city,String time){
 		logger.info("请求一次设备改造的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -124,7 +124,7 @@ public class ChartController  extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = guimoService.selectYCSBGZ(s);
+					List<ResultData> list = guimoService.selectYCSBGZ(s,time);
 					json.put(s, list);
 				}
 			
@@ -149,7 +149,7 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery4.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery4(long[] city){
+	public String contrastQuery4(long[] city,String time){
 		logger.info("请求线路数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -161,7 +161,7 @@ public class ChartController  extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = guimoService.selectXL(s);
+					List<ResultData> list = guimoService.selectXL(s,time);
 					json.put(s, list);
 				}
 			
@@ -186,18 +186,27 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/chart1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String chart1(String city){
+	public String chart1(String city,long[] searchTime){
 		logger.info("请求通信网数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		//List<ResultData> list = new ArrayList<ResultData>();	
-
+       // long [] searchTime = {2015,2016};
+        List<String> time = new ArrayList<String>();
+        for (long s : searchTime) {
+        	time.add(String.valueOf(s));
+		}
+       
 
 		try {
-				List<ResultData> list = guimoService.selectTXW(city);
-			    //返回String 形式的JSON数据
-			   // json.put("2016", list);
-				//return responseSuccess(list); 
-				return responseArraySuccess(list); 
+			
+			for (String s : time) {
+				List<ResultData> list = guimoService.selectTXW(city,s);
+				  //返回String 形式的JSON数据
+			    json.put(s, list);
+			}
+				return responseSuccess(json); 
+				
+				//return responseArraySuccess(list); 
 			
 		} catch (Exception e) {
 			
@@ -216,13 +225,22 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/chart2.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String chart2(String city){
+	public String chart2(String city,long[] searchTime){
 		logger.info("请求配电自动化系统数据的城市进入，city{}",city);
+		JSONObject json = new JSONObject(); //用于给子层命名
+	     List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
 		
 		try {
-			List<ResultData> list = guimoService.selectPDZDHXT(city);
+			for (String s : time) {
+			List<ResultData> list = guimoService.selectPDZDHXT(city,s);
+			json.put(s, list);
+			
+			}
 				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			return responseSuccess(json); 
 			
 			
 		} catch (Exception e) {
@@ -242,13 +260,20 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/chart3.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String chart3(String city){
+	public String chart3(String city,long[] searchTime){
 		logger.info("请求一次设备改造数据的城市进入，city{}",city);
-		
+		JSONObject json = new JSONObject(); //用于给子层命名
+	     List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
 		try {
-			List<ResultData> list = guimoService.selectYCSBGZ(city);
+			for (String s : time) {
+			List<ResultData> list = guimoService.selectYCSBGZ(city,s);
+			json.put(s, list);
+			}
 				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			return responseSuccess(json); 
 			
 			
 		} catch (Exception e) {
@@ -268,14 +293,21 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/chart4.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String chart4(String city){
+	public String chart4(String city,long[] searchTime){
 		logger.info("请求线路数据的城市进入，city{}",city);
-		
+		JSONObject json = new JSONObject(); //用于给子层命名
+	    List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
 		
 		try {
-			List<ResultData> list = guimoService.selectXL(city);
-				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			for (String s : time) {
+			List<ResultData> list = guimoService.selectXL(city,s);
+			json.put(s, list);
+			}
+			//返回String 形式的JSON数据
+			return responseSuccess(json); 
 			
 			
 		} catch (Exception e) {

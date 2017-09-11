@@ -4,9 +4,7 @@ import java.util.List;
 import com.lin.domain.DtuInfo;
 import com.lin.domain.ResultData;
 
-
-
-public interface GuimoService {
+public  interface GuimoService {
 	
 	/**
 	 * 
@@ -21,26 +19,26 @@ public interface GuimoService {
 	  * @return 通信网数据
 	  * @author chenhuan
 	  */
-	 List<ResultData> selectTXW( String city);
+	 List<ResultData> selectTXW( String city,String time);
 	 /**
 	  * 
 	  * @param city
 	  * @return 配电自动化系统数据
 	  * @author chenhuan
 	  */
-	 List<ResultData> selectPDZDHXT(String city);
+	 List<ResultData> selectPDZDHXT(String city,String time);
 	 /**
 	  * 
 	  * @param city
 	  * @return 一次设备改造数据
 	  * @author chenhuan
 	  */
-	 List<ResultData> selectYCSBGZ(String city);
+	 List<ResultData> selectYCSBGZ(String city,String time);
 	 /**
 	  * 
 	  * @param city
 	  * @return 线路数据
 	  * @author chenhuan
 	  */
-	 List<ResultData> selectXL(String city);
+	 List<ResultData> selectXL(String city,String time);
 }
