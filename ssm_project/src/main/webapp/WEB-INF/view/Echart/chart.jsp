@@ -54,7 +54,6 @@ $(function(){
 	             <div class="panel-body" ">
 	                 <label class="control-label" for="cityName">选择查询地区：</label>
 						<select class="combox" id="cityName" name="recommenderId" multiple> 
-					    <option value="">请选择...</option>
 					<optgroup label="大型主站">
 						<option value="37401">济南</option>
 						<option value="37402">青岛</option>
@@ -82,7 +81,6 @@ $(function(){
 		                &nbsp;&nbsp;&nbsp;
 		                <label class="control-label" for="time">选择查询时间：</label>
 						<select class="combox" id="time" name="tagId" > 
-								<option value="">请选择...</option>
 							<optgroup label="查询时间">
 								<option value="2012">2012</option>
 								<option value="2013">2013</option>
@@ -329,9 +327,10 @@ $(function(){
 
   		var cityName = $("#cityName").val();
   		//alert(cityName);
+  		var time = $("#time").val();
   		
    		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName};
+       	var reqParams={'city':cityName,'time':time};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();
@@ -406,7 +405,7 @@ $(function(){
        			 });
  			 	
 	        }
-	                if($(this).val()=="37404"){
+	            if($(this).val()=="37404"){
                 //data后面直接加数字是不可行的，必须采用[]的形式来替代
         		$.each(data['37404'], function (index, item) {
  			 	 datalist4.push(item.value);

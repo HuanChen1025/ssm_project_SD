@@ -21,7 +21,7 @@ public interface GuimoService {
 	  * @return 通信网数据
 	  * @author chenhuan
 	  */
-	 List<ResultData> selectTXW( String city);
+	 List<ResultData> selectTXW( String city,String time);
 	 /**
 	  * 
 	  * @param city

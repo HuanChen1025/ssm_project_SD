@@ -78,7 +78,6 @@ $(function(){
 			 <label class="control-label" for="time">选择查询时间：</label>
 			
 				<select class="combox" id="time" name="tagId" multiple> 
-				<option value="">请选择...</option>
 					<optgroup label="查询时间">
 						<option value="2012">2012</option>
 						<option value="2013">2013</option>
@@ -345,7 +344,9 @@ $(function(){
    		$('#submit').click(function(){
    		var cityName  =  $("#cityName").val();
    		var legendName = $("#time").val();
-       	var reqParams={'city':cityName};
+   		var time = $("#time").val();
+   		alert(time);
+       	var reqParams={'city':cityName,'time':time};
    		var datalist = new Array();
    		var elementlist = new Array();
    		$.ajax({
@@ -361,10 +362,43 @@ $(function(){
   				datalist[i]=data[i].value;
   				elementlist[i]=data[i].element_name;
   			}
+  			
+  			var datalist1 = new Array();
+   			var datalist2 = new Array();
+   			var series=[];
+   			  $("#time option:selected").each(function(){
+   			  	if(this.val()=="2016"){
+   			  	$.each(data['2016'],function(index,item){
+   			  	  datalist1.push(item.value);
+   			  	  elementlist.push(item.element_name);
+   			  	});
+   			  	series.push( {
+                name: '2016',
+                type: 'line',
+                data: datalist1,
+            });
+   			  }
+   			    if(this.val()=="2015"){
+   			  	$.each(data['2015'],function(index,item){
+   			  	  datalist2.push(item.value);
+   			  	 if(elementlist.length<datalist2.length)
+ 			 	 elementlist.push(item.element_name);
+   			  	});
+   			  	series.push( {
+                name: '2015',
+                type: 'line',
+                data: datalist2,
+            });
+   			  }
+   			  
+   			  
+   			  
+   			  });
+  			
    			},
    			 	error: function(e){
-            	           alert("查询失败:" + e);
-            	        },
+            	  alert("查询失败:" + e);
+            	 },
    		});
    		myChart1.setOption(
    		{
@@ -377,22 +411,7 @@ $(function(){
                 data: elementlist,
             },
             yAxis: {},
-            series: [
-            
-            {
-                name: '2016',
-                type: 'line',
-                data: datalist,
-            },
-               {
-                name: '2015',
-                type: 'line',
-                data: [10,180,165,0,2800,16,15],
-            }
-            
-            
-            
-            ]
+            series: series,
    		}
 
    		);

@@ -21,9 +21,9 @@ public class GuimoServiceImpl implements GuimoService {
 	}
 
 	@Override
-	public List<ResultData> selectTXW(String area) {
+	public List<ResultData> selectTXW(String area,String time) {
 		
-		List<ResultData> list = guimoDao.selectTXW(area);
+		List<ResultData> list = guimoDao.selectTXW(area,time);
 		return list;
 	}
 
