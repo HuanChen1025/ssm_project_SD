@@ -346,7 +346,7 @@ $(function(){
    		var legendName = $("#time").val();
    		var time = $("#time").val();
    		alert(time);
-       	var reqParams={'city':cityName,'time':time};
+       	var reqParams={'city':cityName};
    		var datalist = new Array();
    		var elementlist = new Array();
    		$.ajax({
@@ -363,37 +363,6 @@ $(function(){
   				elementlist[i]=data[i].element_name;
   			}
   			
-  			var datalist1 = new Array();
-   			var datalist2 = new Array();
-   			var series=[];
-   			  $("#time option:selected").each(function(){
-   			  	if(this.val()=="2016"){
-   			  	$.each(data['2016'],function(index,item){
-   			  	  datalist1.push(item.value);
-   			  	  elementlist.push(item.element_name);
-   			  	});
-   			  	series.push( {
-                name: '2016',
-                type: 'line',
-                data: datalist1,
-            });
-   			  }
-   			    if(this.val()=="2015"){
-   			  	$.each(data['2015'],function(index,item){
-   			  	  datalist2.push(item.value);
-   			  	 if(elementlist.length<datalist2.length)
- 			 	 elementlist.push(item.element_name);
-   			  	});
-   			  	series.push( {
-                name: '2015',
-                type: 'line',
-                data: datalist2,
-            });
-   			  }
-   			  
-   			  
-   			  
-   			  });
   			
    			},
    			 	error: function(e){
@@ -402,6 +371,7 @@ $(function(){
    		});
    		myChart1.setOption(
    		{
+   		
    		legend: {
             	x:'center',
                 data:legendName
@@ -411,7 +381,18 @@ $(function(){
                 data: elementlist,
             },
             yAxis: {},
-            series: series,
+            series: [
+            {
+               name: '2016',
+                type: 'line',
+                data: datalist,
+            },
+            
+            
+            
+            ]
+            
+            
    		}
 
    		);

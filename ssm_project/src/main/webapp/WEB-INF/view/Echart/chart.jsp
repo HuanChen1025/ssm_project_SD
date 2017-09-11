@@ -330,7 +330,7 @@ $(function(){
   		var time = $("#time").val();
   		
    		//var cityName = $("#city").val();
-       	var reqParams={'city':cityName,'time':time};
+       	var reqParams={'city':cityName};
    		var datalist1 = new Array();
    		var datalist2 = new Array();
    		var datalist3 = new Array();

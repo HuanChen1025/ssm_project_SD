@@ -39,7 +39,7 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery1(long[] city,String time){
+	public String contrastQuery1(long[] city){
 		logger.info("请求通信网数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -51,7 +51,7 @@ public class ChartController  extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = guimoService.selectTXW(s,time);
+					List<ResultData> list = guimoService.selectTXW(s);
 					json.put(s, list);
 				}
 			
@@ -177,8 +177,6 @@ public class ChartController  extends BaseController {
 		
 	}
 	
-	
-
 	/**
 	 * 单地区查询 通信网数据
 	 * @param city
@@ -188,30 +186,18 @@ public class ChartController  extends BaseController {
 	 */
 	@RequestMapping(value="/chart1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String chart1(String city,long[] time){
+	public String chart1(String city){
 		logger.info("请求通信网数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		//List<ResultData> list = new ArrayList<ResultData>();	
-		List<String> cityList = new ArrayList<String>();
-		for (long l : time) {
-			cityList.add(String.valueOf(l));
-		}
+
 
 		try {
-			for (String s : cityList) {
-				List<ResultData> list = guimoService.selectTXW(city,s);
-				System.out.println(list.toString());
-			}
-			
-	
-		    //返回String 形式的JSON数据
-		     //json.put("2016", list);
-				
-			
-			
-		
-			return responseSuccess(json); 
-			
+				List<ResultData> list = guimoService.selectTXW(city);
+			    //返回String 形式的JSON数据
+			   // json.put("2016", list);
+				//return responseSuccess(list); 
+				return responseArraySuccess(list); 
 			
 		} catch (Exception e) {
 			
