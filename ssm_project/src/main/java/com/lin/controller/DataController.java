@@ -33,18 +33,27 @@ public class DataController extends BaseController {
 	
 	
 	/**
-	 * 社会效益
+	 * 单地区多时间，社会效益
 	 * @param city
 	 * @return
 	 */
 	@RequestMapping(value="/SHXY.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String touZiData_SHXY(String city){
+	public String touZiData_SHXY(String city,long[] searchTime){
 		logger.info("请求社会效益数据的城市进入，city{}",city);
+		JSONObject json = new JSONObject(); //用于给子层命名
+        List<String> time = new ArrayList<String>();
+        for (long s : searchTime) {
+        	time.add(String.valueOf(s));
+		}
 		try {
-			List<ResultData> list = touziService.selectSHXY(city);
-				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			for (String s : time) {
+				List<ResultData> list = touziService.selectSHXY(city,s);
+				json.put(s, list);
+			}
+			
+			//返回String 形式的JSON数据
+			return responseSuccess(json); 
 			
 			
 		} catch (Exception e) {
@@ -61,12 +70,21 @@ public class DataController extends BaseController {
 	
 	@RequestMapping(value="/QYXY.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String touZiData_QYXY(String city){
+	public String touZiData_QYXY(String city,long[] searchTime){
 		logger.info("请求企业效益数据的城市进入，city{}",city);
+		JSONObject json = new JSONObject(); //用于给子层命名
+        List<String> time = new ArrayList<String>();
+        for (long s : searchTime) {
+        	time.add(String.valueOf(s));
+		}
 		try {
-			List<ResultData> list = touziService.selectQYXY(city);
+			for (String s : time) {
+				List<ResultData> list = touziService.selectQYXY(city,s);
+				 json.put(s, list);
+			}
+			
 				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			return responseSuccess(json);
 			
 			
 		} catch (Exception e) {
@@ -86,7 +104,7 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery_QYXY.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery_QYXY(long[] city){
+	public String contrastQuery_QYXY(long[] city,String time){
 		logger.info("请求企业效益数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -98,7 +116,7 @@ public class DataController extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = touziService.selectQYXY(s);
+					List<ResultData> list = touziService.selectQYXY(s,time);
 					json.put(s, list);
 				}
 			
@@ -122,7 +140,7 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery_SHXY.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery_SHXY(long[] city){
+	public String contrastQuery_SHXY(long[] city,String time){
 		logger.info("请求企业效益数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
@@ -134,7 +152,7 @@ public class DataController extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = touziService.selectSHXY(s);
+					List<ResultData> list = touziService.selectSHXY(s,time);
 					json.put(s, list);
 				}
 			
@@ -150,29 +168,40 @@ public class DataController extends BaseController {
 	}
 	
 	/**
-	 * 运维成本，单地区查询
+	 * 投入成本，单地区查询
 	 * @param city
 	 * @return
 	 */
 	@RequestMapping(value="/YWCB.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String ywcbData(String city){
-		logger.info("请求运维成本数据的城市进入，city{}",city);
+	public String ywcbData(String city,long[] searchTime){
+		logger.info("请求投入成本数据的城市进入，city{}",city);
+		JSONObject json = new JSONObject(); //用于给子层命名
+        List<String> time = new ArrayList<String>();
+        for (long s : searchTime) {
+        	time.add(String.valueOf(s));
+		}
 		try {
-			List<ResultData> list = touziService.selectYWCB(city);
+			for (String s : time) {
+			List<ResultData> list = touziService.selectYWCB(city,s);
+			 json.put(s, list);
+			}
+			
+			
 				//返回String 形式的JSON数据
-			return responseArraySuccess(list); 
+			return responseSuccess(json); 
 			
 			
 		} catch (Exception e) {
 			
 			return responseFail(e.getMessage());
+			
 		}
 		
 	}
 	
 	/**
-	 * 测试传输多地区数据，传输运维成本数据
+	 * 测试传输多地区数据，传输投入成本数据
 	 * @param 城市名称city
 	 * @author chenhuan
 	 * @return 
@@ -180,8 +209,8 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/contrastQuery_YWCB.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String contrastQuery_YWCB(long[] city){
-		logger.info("请求运维成本数据的城市进入，city{}",city);
+	public String contrastQuery_YWCB(long[] city,String time){
+		logger.info("请求投入成本数据的城市进入，city{}",city);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> cityList = new ArrayList<String>();
 		for (long l : city) {
@@ -192,7 +221,7 @@ public class DataController extends BaseController {
 				
 				for (String s : cityList) {
 					
-					List<ResultData> list = touziService.selectYWCB(s);
+					List<ResultData> list = touziService.selectYWCB(s,time);
 					json.put(s, list);
 				}
 			
@@ -210,7 +239,7 @@ public class DataController extends BaseController {
 	
 	@RequestMapping(value="/benifit_data_class1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_data_class1(String[] Name){
+	public String benefit_data_class1(String[] Name,String time){
 		logger.info("请求查询效益的数据进入，name{}",Name);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> List = new ArrayList<String>();
@@ -222,15 +251,12 @@ public class DataController extends BaseController {
 			
 			for (String s : List) {
 				
-				List<ValueNumber> list = touziService.select_benefit_class1(s);
+				List<ValueNumber> list = touziService.select_benefit_class1(s,time);
 				json.put(s, list);
 			}
 		
 			return responseSuccess(json);
 		//返回String 形式的JSON数据
-		
-		
-		
 	} catch (Exception e) {
 		
 		return responseFail(e.getMessage());
@@ -242,7 +268,7 @@ public class DataController extends BaseController {
 	
 	@RequestMapping(value="/benifit_data_class2.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_data_class2(String[] Name){
+	public String benefit_data_class2(String[] Name,String time){
 		logger.info("请求查询效益的数据进入，name{}",Name);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> List = new ArrayList<String>();
@@ -254,7 +280,7 @@ public class DataController extends BaseController {
 			
 			for (String s : List) {
 				
-				List<ValueNumber> list = touziService.select_benefit_class2(s);
+				List<ValueNumber> list = touziService.select_benefit_class2(s,time);
 				json.put(s, list);
 			}
 		
@@ -274,7 +300,7 @@ public class DataController extends BaseController {
 	
 	@RequestMapping(value="/benifit_data_class3.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_data_class3(String[] Name){
+	public String benefit_data_class3(String[] Name,String time){
 		logger.info("请求查询效益的数据进入，name{}",Name);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		List<String> List = new ArrayList<String>();
@@ -286,7 +312,7 @@ public class DataController extends BaseController {
 			
 			for (String s : List) {
 				
-				List<ValueNumber> list = touziService.select_benefit_class3(s);
+				List<ValueNumber> list = touziService.select_benefit_class3(s,time);
 				json.put(s, list);
 			}
 		
@@ -311,13 +337,13 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/benifit_cost_class1.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_cost_class1(String[] benefitName,String[] costName){
+	public String benefit_cost_class1(String[] benefitName,String[] costName,String time){
 		logger.info("请求查询效益的数据进入，name{}",benefitName);
 		logger.info("请求查询成本的数据进入，costName{}",costName);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		try {
 			
-				List<ValueNumber> list = touziService.benifit_cost_class1(benefitName, costName);
+				List<ValueNumber> list = touziService.benifit_cost_class1(benefitName, costName,time);
 			    json.put("classData", list);
 
 
@@ -372,13 +398,13 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/benifit_cost_class2.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_cost_class2(String[] benefitName,String[] costName){
+	public String benefit_cost_class2(String[] benefitName,String[] costName,String time){
 		logger.info("请求查询效益的数据进入，name{}",benefitName);
 		logger.info("请求查询成本的数据进入，costName{}",costName);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		try {
 			
-				List<ValueNumber> list = touziService.benifit_cost_class2(benefitName, costName);
+				List<ValueNumber> list = touziService.benifit_cost_class2(benefitName, costName,time);
 			    json.put("classData", list);
 
 
@@ -400,13 +426,13 @@ public class DataController extends BaseController {
 	 */
 	@RequestMapping(value="/benifit_cost_class3.do",method= RequestMethod.POST)
 	@ResponseBody
-	public String benefit_cost_class3(String[] benefitName,String[] costName){
+	public String benefit_cost_class3(String[] benefitName,String[] costName,String time){
 		logger.info("请求查询效益的数据进入，name{}",benefitName);
 		logger.info("请求查询成本的数据进入，costName{}",costName);
 		JSONObject json = new JSONObject(); //用于给子层命名
 		try {
 			
-				List<ValueNumber> list = touziService.benifit_cost_class3(benefitName, costName);
+				List<ValueNumber> list = touziService.benifit_cost_class3(benefitName, costName,time);
 			    json.put("classData", list);
 
 
@@ -417,6 +443,84 @@ public class DataController extends BaseController {
 		return responseFail(e.getMessage());
 	}
 		
+		
+	}
+	
+	@RequestMapping(value="/benifit_link_cost1.do",method= RequestMethod.POST)
+	@ResponseBody
+	public String benifit_link_cost1(String name,long[] searchTime){
+		logger.info("请求关联分析的城市进入，city{}",name);
+		JSONObject json = new JSONObject(); //用于给子层命名
+	    List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
+		
+		try {
+			for (String s : time) {
+			List<ValueNumber> list = touziService.benifit_link_cost1(name, s);
+			json.put(s, list);
+			}
+			//返回String 形式的JSON数据
+			return responseSuccess(json); 
+			
+			
+		} catch (Exception e) {
+			
+			return responseFail(e.getMessage());
+		}
+		
+	}
+	
+	@RequestMapping(value="/benifit_link_cost2.do",method= RequestMethod.POST)
+	@ResponseBody
+	public String benifit_link_cost2(String name,long[] searchTime){
+		logger.info("请求关联分析的城市进入，city{}",name);
+		JSONObject json = new JSONObject(); //用于给子层命名
+	    List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
+		
+		try {
+			for (String s : time) {
+			List<ValueNumber> list = touziService.benifit_link_cost2(name, s);
+			json.put(s, list);
+			}
+			//返回String 形式的JSON数据
+			return responseSuccess(json); 
+			
+			
+		} catch (Exception e) {
+			
+			return responseFail(e.getMessage());
+		}
+		
+	}
+	
+	@RequestMapping(value="/benifit_link_cost3.do",method= RequestMethod.POST)
+	@ResponseBody
+	public String benifit_link_cost3(String name,long[] searchTime){
+		logger.info("请求关联分析的城市进入，city{}",name);
+		JSONObject json = new JSONObject(); //用于给子层命名
+	    List<String> time = new ArrayList<String>();
+	        for (long s : searchTime) {
+	        	time.add(String.valueOf(s));
+			}
+		
+		try {
+			for (String s : time) {
+			List<ValueNumber> list = touziService.benifit_link_cost3(name, s);
+			json.put(s, list);
+			}
+			//返回String 形式的JSON数据
+			return responseSuccess(json); 
+			
+			
+		} catch (Exception e) {
+			
+			return responseFail(e.getMessage());
+		}
 		
 	}
 	

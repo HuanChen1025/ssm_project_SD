@@ -1,28 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>  
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lin.dao.GuimoDao">
-
-<!-- 查找数据库相应地区和年份的DTU和FTU数量 -->
- <select id="selectDFtu"  resultType="com.lin.domain.DtuInfo">    
-        select dtu_2 , dtu_3, ftu_2, ftu_3 from t_cxfx_zdh_gsgm  
-        where orgno = #{selectArea,jdbcType=VARCHAR}   and tj_time=#{selectTime,jdbcType=VARCHAR}
-    </select> 
+    <!-- 查找数据库相应地区和年份的DTU和FTU数量 -->
+    <select id="selectDFtu" resultType="com.lin.domain.DtuInfo">
+        select dtu_2 , dtu_3, ftu_2, ftu_3 from t_cxfx_zdh_gsgm where orgno = #{selectArea,jdbcType=VARCHAR} and tj_time=#{selectTime,jdbcType=VARCHAR}
+    </select>
     <!-- 查找通信网数据 -->
-    <select id="selectTXW"  resultType="com.lin.domain.ResultData" >
-    select element_name, value from data_view  where model_name='通信网' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR}  order by element_name
+    <select id="selectTXW" resultType="com.lin.domain.ResultData">
+        select element_name, value from data_view where model_name='通信网' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找配电自动化系统数据 -->
     <select id="selectPDZDHXT" resultType="com.lin.domain.ResultData">
-     select element_name, value from data_view  where model_name='配电自动化系统' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
+        select element_name, value from data_view where model_name='配电自动化系统' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找一次设备改造数据 -->
     <select id="selectYCSBGZ" resultType="com.lin.domain.ResultData">
-     select element_name, value from data_view  where model_name='一次设备改造' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
+        select element_name, value from data_view where model_name='一次设备改造' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
     </select>
     <!-- 查找线路数据 -->
     <select id="selectXL" resultType="com.lin.domain.ResultData">
-     select element_name, value from data_view  where model_name='线路' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
+        select element_name, value from data_view where model_name='线路' and orgno=#{selectArea,jdbcType=VARCHAR} and update_time=#{selectTime,jdbcType=VARCHAR} order by element_name
     </select>
-
 </mapper>

@@ -18,10 +18,10 @@
         </style>
         <script type="text/javascript">
         $(function() {
-            $('#benefit').select2({
-                placeholder: "请选择一个效益",
+            $('#time').select2({
+                placeholder: "请选择查询时间",
                 templateResult: formatState,
-                width: '256px'
+                width: '200px'
             });
 
             function formatState(state) {
@@ -31,67 +31,42 @@
                 );
                 return $state;
             };
-
-            $('#time').select2({
-                placeholder: "请选择查询时间",
+            $('#elementName').select2({
+                placeholder: "请选择一个查询元素",
                 templateResult: formatState,
                 width: '200px'
             });
+
         });
         </script>
     </head>
 
     <body>
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="width:1100px">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                    模态框（Modal）标题
-                </h4>
-                    </div>
-                    <div class="modal-body">
-                        在这里添加一些文本
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            提交更改
-                        </button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal -->
-        </div>
         <div class="panel panel-info" style="width:800px; margin: 20px auto 20px">
             <div class="panel-heading">
                 <h3 class="panel-title">查询</h3>
             </div>
             <div class="panel-body">
-                <label class="control-label" for="benefit">选择查询效益：</label>
-                <select class="combox" id="benefit" name="tagId" multiple>
-                    <optgroup label="社会效益">
-                        <option value="工业拉升效益">工业拉升效益</option>
-                        <option value="经济拉升效益">经济拉升效益</option>
-                        <option value="居民拉升效益">居民拉升效益</option>
-                        <option value="商业拉升效益">商业拉升效益</option>
+                <label class="control-label" for="elementName">选择查询类型：</label>
+                <select class="combox" id="elementName" name="recommenderId">
+                    <option value="">请选择...</option>
+                    <optgroup label="投入产出比">
+                        <option value="企业投入产出比">企业投入产出比</option>
+                        <option value="全社会投入产出比">全社会投入产出比</option>
                     </optgroup>
-                    <optgroup label="企业效益">
-                        <option value="降低线损效益">降低线损效益</option>
-                        <option value="馈线自动化运维效益">馈线自动化运维效益</option>
-                        <option value="远程遥控效益">远程遥控效益</option>
-                        <option value="运行监视效益">运行监视效益</option>
-                        <option value="增供电量效益">增供电量效益</option>
+                    <optgroup label="增幅分析">
+                        <option value="规模增幅">规模增幅</option>
+                        <option value="成本增幅">成本增幅</option>
+                        <option value="效益增幅">效益增幅</option>
+                    </optgroup>
+                    <optgroup label="敏感性分析">
+                        <option value="设备价格下降">设备价格下降10%</option>
+                        <option value="提高负载率">提高负载率</option>
                     </optgroup>
                 </select>
                 <label class="control-label" for="time">选择查询时间：</label>
                 <select class="combox" id="time" name="tagId" multiple>
+                    <option value="">请选择...</option>
                     <optgroup label="查询时间">
                         <option value="2012">2012</option>
                         <option value="2013">2013</option>
@@ -303,15 +278,6 @@
             myChart2.setOption(option2);
             myChart3.setOption(option3);
 
-            myChart1.on('click', function(param) {
-                alert("hello");
-                $('.modal-body').load("YunweiContract", function() {
-
-                });
-
-                $('#myModal').modal('show');
-
-            });
 
         });
         </script>
@@ -323,26 +289,19 @@
             return postPath;
         })();
         //异步加载数据
-        var URL1 = urlRootContext + "/user/benifit_data_class1.do"; //请求的网址
-        var URL2 = urlRootContext + "/user/benifit_data_class2.do"; //请求的网址
-        var URL3 = urlRootContext + "/user/benifit_data_class3.do"; //请求的网址
+        var URL1 = urlRootContext + "/user/benifit_link_cost1.do"; //请求的网址
+        var URL2 = urlRootContext + "/user/benifit_link_cost2.do"; //请求的网址
+        var URL3 = urlRootContext + "/user/benifit_link_cost3.do"; //请求的网址
 
         $('#submit').click(function() {
             var myChart1 = echarts.init(document.getElementById('chart1'));
-            var Name = $("#benefit").val();
             var time = $("#time").val();
-            var reqParams = { 'Name': Name, 'time': time };
+            var name = $("#elementName").val();
+            var reqParams = { 'name': name, 'searchTime': time };
             var datalist1 = new Array();
             var datalist2 = new Array();
             var datalist3 = new Array();
             var datalist4 = new Array();
-            var datalist5 = new Array();
-            var datalist6 = new Array();
-            var datalist7 = new Array();
-            var datalist8 = new Array();
-            var datalist9 = new Array();
-            var datalist10 = new Array();
-            var datalist11 = new Array();
             //series用于显示
             var series = [];
             $.ajax({
@@ -354,124 +313,60 @@
                 dataType: "json",
                 traditional: true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
                 success: function(data) {
-
-                    $("#benefit option:selected").each(function() {
-                        if ($(this).val() == "工业拉升效益") {
-                            $.each(data.工业拉升效益, function(index, item) {
+                    $("#time option:selected").each(function() {
+                        if ($(this).val() == "2013") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2013'], function(index, item) {
                                 datalist1.push(item.value);
+
                             });
                             series.push({
-                                name: '工业拉升效益',
+                                name: '2013',
                                 type: 'line',
                                 data: datalist1,
+
                             });
                         }
-                        if ($(this).val() == "经济拉升效益") {
-                            $.each(data.经济拉升效益, function(index, item) {
+                        if ($(this).val() == "2014") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2014'], function(index, item) {
                                 datalist2.push(item.value);
+
                             });
                             series.push({
-                                name: '经济拉升效益',
+                                name: '2014',
                                 type: 'line',
                                 data: datalist2,
                             });
                         }
-
-                        if ($(this).val() == "居民拉升效益") {
-
-                            $.each(data.居民拉升效益, function(index, item) {
+                        if ($(this).val() == "2015") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2015'], function(index, item) {
                                 datalist3.push(item.value);
+
                             });
                             series.push({
-                                name: '居民拉升效益',
+                                name: '2015',
                                 type: 'line',
                                 data: datalist3,
+
                             });
-
                         }
-
-                        if ($(this).val() == "商业拉升效益") {
-                            $.each(data.商业拉升效益, function(index, item) {
+                        if ($(this).val() == "2016") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2016'], function(index, item) {
                                 datalist4.push(item.value);
+
                             });
                             series.push({
-                                name: '商业拉升效益',
+                                name: '2016',
                                 type: 'line',
                                 data: datalist4,
-                            });
-                        }
-                        if ($(this).val() == "降低线损效益") {
-                            $.each(data.降低线损效益, function(index, item) {
-                                datalist5.push(item.value);
-                            });
-                            series.push({
-                                name: '降低线损效益',
-                                type: 'line',
-                                data: datalist5,
-                            });
-                        }
-                        if ($(this).val() == "精准投资效益") {
-                            $.each(data.精准投资效益, function(index, item) {
-                                datalist6.push(item.value);
-                            });
-                            series.push({
-                                name: '精准投资效益',
-                                type: 'line',
-                                data: datalist6,
-                            });
-                        }
-                        if ($(this).val() == "馈线自动化运维效益") {
-                            $.each(data.馈线自动化运维效益, function(index, item) {
-                                datalist7.push(item.value);
-                            });
-                            series.push({
-                                name: '馈线自动化运维效益',
-                                type: 'line',
-                                data: datalist7,
-                            });
-                        }
-                        if ($(this).val() == "人员人身安全效益") {
-                            $.each(data.人员人身安全效益, function(index, item) {
-                                datalist8.push(item.value);
-                            });
-                            series.push({
-                                name: '人员人身安全效益',
-                                type: 'line',
-                                data: datalist8,
-                            });
-                        }
-                        if ($(this).val() == "远程遥控效益") {
-                            $.each(data.远程遥控效益, function(index, item) {
-                                datalist9.push(item.value);
-                            });
-                            series.push({
-                                name: '远程遥控效益',
-                                type: 'line',
-                                data: datalist9,
-                            });
-                        }
-                        if ($(this).val() == "运行监视效益") {
-                            $.each(data.运行监视效益, function(index, item) {
-                                datalist10.push(item.value);
-                            });
-                            series.push({
-                                name: '运行监视效益',
-                                type: 'line',
-                                data: datalist10,
-                            });
-                        }
-                        if ($(this).val() == "增供电量效益") {
-                            $.each(data.增供电量效益, function(index, item) {
-                                datalist11.push(item.value);
-                            });
-                            series.push({
-                                name: '增供电量效益',
-                                type: 'line',
-                                data: datalist11,
+
                             });
                         }
 
-                    });
+                    })
                 },
                 error: function(e) {
                     alert("查询失败:" + e);
@@ -481,7 +376,7 @@
             option1 = {
 
                 title: {
-                    text: '类别1——配电自动化效益分析',
+                    text: '类别1——配电自动化关联分析',
                     x: 'left'
                 },
                 tooltip: {
@@ -490,7 +385,7 @@
                         var res = datas[0].name + '<br/>',
                             val;
                         for (var i = 0, length = datas.length; i < length; i++) {
-                            val = (datas[i].value) + ' 万元';
+                            val = (datas[i].value) + ' ';
                             res += datas[i].seriesName + '：' + val + '<br/>';
                         }
                         return res;
@@ -509,7 +404,7 @@
                 legend: {
                     x: 'center',
                     top: 30,
-                    data: Name
+                    data: time
                 },
                 toolbox: {
                     show: true,
@@ -542,20 +437,13 @@
 
         $('#submit').click(function() {
             var myChart2 = echarts.init(document.getElementById('chart2'));
-            var Name = $("#benefit").val();
             var time = $("#time").val();
-            var reqParams = { 'Name': Name, 'time': time };
+            var name = $("#elementName").val();
+            var reqParams = { 'name': name, 'searchTime': time };
             var datalist1 = new Array();
             var datalist2 = new Array();
             var datalist3 = new Array();
             var datalist4 = new Array();
-            var datalist5 = new Array();
-            var datalist6 = new Array();
-            var datalist7 = new Array();
-            var datalist8 = new Array();
-            var datalist9 = new Array();
-            var datalist10 = new Array();
-            var datalist11 = new Array();
             //series用于显示
             var series = [];
             $.ajax({
@@ -568,123 +456,62 @@
                 traditional: true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
                 success: function(data) {
 
-                    $("#benefit option:selected").each(function() {
-                        if ($(this).val() == "工业拉升效益") {
-                            $.each(data.工业拉升效益, function(index, item) {
+                    $("#time option:selected").each(function() {
+
+                        if ($(this).val() == "2013") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2013'], function(index, item) {
                                 datalist1.push(item.value);
+
                             });
                             series.push({
-                                name: '工业拉升效益',
+                                name: '2013',
                                 type: 'line',
                                 data: datalist1,
+
                             });
                         }
-                        if ($(this).val() == "经济拉升效益") {
-                            $.each(data.经济拉升效益, function(index, item) {
+                        if ($(this).val() == "2014") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2014'], function(index, item) {
                                 datalist2.push(item.value);
+
                             });
                             series.push({
-                                name: '经济拉升效益',
+                                name: '2014',
                                 type: 'line',
                                 data: datalist2,
+
                             });
                         }
-
-                        if ($(this).val() == "居民拉升效益") {
-
-                            $.each(data.居民拉升效益, function(index, item) {
+                        if ($(this).val() == "2015") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2015'], function(index, item) {
                                 datalist3.push(item.value);
+
                             });
                             series.push({
-                                name: '居民拉升效益',
+                                name: '2015',
                                 type: 'line',
                                 data: datalist3,
+
                             });
-
                         }
-
-                        if ($(this).val() == "商业拉升效益") {
-                            $.each(data.商业拉升效益, function(index, item) {
+                        if ($(this).val() == "2016") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2016'], function(index, item) {
                                 datalist4.push(item.value);
+
                             });
                             series.push({
-                                name: '商业拉升效益',
+                                name: '2016',
                                 type: 'line',
                                 data: datalist4,
-                            });
-                        }
-                        if ($(this).val() == "降低线损效益") {
-                            $.each(data.降低线损效益, function(index, item) {
-                                datalist5.push(item.value);
-                            });
-                            series.push({
-                                name: '降低线损效益',
-                                type: 'line',
-                                data: datalist5,
-                            });
-                        }
-                        if ($(this).val() == "精准投资效益") {
-                            $.each(data.精准投资效益, function(index, item) {
-                                datalist6.push(item.value);
-                            });
-                            series.push({
-                                name: '精准投资效益',
-                                type: 'line',
-                                data: datalist6,
-                            });
-                        }
-                        if ($(this).val() == "馈线自动化运维效益") {
-                            $.each(data.馈线自动化运维效益, function(index, item) {
-                                datalist7.push(item.value);
-                            });
-                            series.push({
-                                name: '馈线自动化运维效益',
-                                type: 'line',
-                                data: datalist7,
-                            });
-                        }
-                        if ($(this).val() == "人员人身安全效益") {
-                            $.each(data.人员人身安全效益, function(index, item) {
-                                datalist8.push(item.value);
-                            });
-                            series.push({
-                                name: '人员人身安全效益',
-                                type: 'line',
-                                data: datalist8,
-                            });
-                        }
-                        if ($(this).val() == "远程遥控效益") {
-                            $.each(data.远程遥控效益, function(index, item) {
-                                datalist9.push(item.value);
-                            });
-                            series.push({
-                                name: '远程遥控效益',
-                                type: 'line',
-                                data: datalist9,
-                            });
-                        }
-                        if ($(this).val() == "运行监视效益") {
-                            $.each(data.运行监视效益, function(index, item) {
-                                datalist10.push(item.value);
-                            });
-                            series.push({
-                                name: '运行监视效益',
-                                type: 'line',
-                                data: datalist10,
-                            });
-                        }
-                        if ($(this).val() == "增供电量效益") {
-                            $.each(data.增供电量效益, function(index, item) {
-                                datalist11.push(item.value);
-                            });
-                            series.push({
-                                name: '增供电量效益',
-                                type: 'line',
-                                data: datalist11,
+
                             });
                         }
 
-                    });
+                    })
                 },
                 error: function(e) {
                     alert("查询失败:" + e);
@@ -693,7 +520,7 @@
             myChart2.clear(); //清除echarts加载的缓存
             option2 = {
                 title: {
-                    text: '类别2——配电自动化效益分析',
+                    text: '类别2——配电自动化关联分析',
                     x: 'left'
                 },
                 tooltip: {
@@ -702,7 +529,7 @@
                         var res = datas[0].name + '<br/>',
                             val;
                         for (var i = 0, length = datas.length; i < length; i++) {
-                            val = (datas[i].value) + ' 万元';
+                            val = (datas[i].value) + ' ';
                             res += datas[i].seriesName + '：' + val + '<br/>';
                         }
                         return res;
@@ -721,7 +548,7 @@
                 legend: {
                     x: 'center',
                     top: 30,
-                    data: Name
+                    data: time
                 },
                 toolbox: {
                     show: true,
@@ -752,24 +579,15 @@
 
         });
 
-
-
         $('#submit').click(function() {
             var myChart3 = echarts.init(document.getElementById('chart3'));
-            var Name = $("#benefit").val();
             var time = $("#time").val();
-            var reqParams = { 'Name': Name, 'time': time };
+            var name = $("#elementName").val();
+            var reqParams = { 'name': name, 'searchTime': time };
             var datalist1 = new Array();
             var datalist2 = new Array();
             var datalist3 = new Array();
             var datalist4 = new Array();
-            var datalist5 = new Array();
-            var datalist6 = new Array();
-            var datalist7 = new Array();
-            var datalist8 = new Array();
-            var datalist9 = new Array();
-            var datalist10 = new Array();
-            var datalist11 = new Array();
             //series用于显示
             var series = [];
             $.ajax({
@@ -781,123 +599,62 @@
                 dataType: "json",
                 traditional: true, //传递数组时必须使用，很重要,否则后台无法接收到传递的数组
                 success: function(data) {
-
-                    $("#benefit option:selected").each(function() {
-                        if ($(this).val() == "工业拉升效益") {
-                            $.each(data.工业拉升效益, function(index, item) {
+                    $("#time option:selected").each(function() {
+                        if ($(this).val() == "2013") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2013'], function(index, item) {
                                 datalist1.push(item.value);
+
                             });
                             series.push({
-                                name: '工业拉升效益',
+                                name: '2013',
                                 type: 'line',
                                 data: datalist1,
+
                             });
                         }
-                        if ($(this).val() == "经济拉升效益") {
-                            $.each(data.经济拉升效益, function(index, item) {
+                        if ($(this).val() == "2014") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2014'], function(index, item) {
                                 datalist2.push(item.value);
+
                             });
                             series.push({
-                                name: '经济拉升效益',
+                                name: '2014',
                                 type: 'line',
                                 data: datalist2,
+
                             });
                         }
-
-                        if ($(this).val() == "居民拉升效益") {
-
-                            $.each(data.居民拉升效益, function(index, item) {
+                        if ($(this).val() == "2015") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2015'], function(index, item) {
                                 datalist3.push(item.value);
+
                             });
                             series.push({
-                                name: '居民拉升效益',
+                                name: '2015',
                                 type: 'line',
                                 data: datalist3,
+
                             });
                         }
-
-                        if ($(this).val() == "商业拉升效益") {
-                            $.each(data.商业拉升效益, function(index, item) {
+                        if ($(this).val() == "2016") {
+                            //data后面直接加数字是不可行的，必须采用[]的形式来替代
+                            $.each(data['2016'], function(index, item) {
                                 datalist4.push(item.value);
+
                             });
                             series.push({
-                                name: '商业拉升效益',
+                                name: '2016',
                                 type: 'line',
                                 data: datalist4,
-                            });
-                        }
-                        if ($(this).val() == "降低线损效益") {
-                            $.each(data.降低线损效益, function(index, item) {
-                                datalist5.push(item.value);
-                            });
-                            series.push({
-                                name: '降低线损效益',
-                                type: 'line',
-                                data: datalist5,
-                            });
-                        }
-                        if ($(this).val() == "精准投资效益") {
-                            $.each(data.精准投资效益, function(index, item) {
-                                datalist6.push(item.value);
-                            });
-                            series.push({
-                                name: '精准投资效益',
-                                type: 'line',
-                                data: datalist6,
-                            });
-                        }
-                        if ($(this).val() == "馈线自动化运维效益") {
-                            $.each(data.馈线自动化运维效益, function(index, item) {
-                                datalist7.push(item.value);
-                            });
-                            series.push({
-                                name: '馈线自动化运维效益',
-                                type: 'line',
-                                data: datalist7,
-                            });
-                        }
-                        if ($(this).val() == "人员人身安全效益") {
-                            $.each(data.人员人身安全效益, function(index, item) {
-                                datalist8.push(item.value);
-                            });
-                            series.push({
-                                name: '人员人身安全效益',
-                                type: 'line',
-                                data: datalist8,
-                            });
-                        }
-                        if ($(this).val() == "远程遥控效益") {
-                            $.each(data.远程遥控效益, function(index, item) {
-                                datalist9.push(item.value);
-                            });
-                            series.push({
-                                name: '远程遥控效益',
-                                type: 'line',
-                                data: datalist9,
-                            });
-                        }
-                        if ($(this).val() == "运行监视效益") {
-                            $.each(data.运行监视效益, function(index, item) {
-                                datalist10.push(item.value);
-                            });
-                            series.push({
-                                name: '运行监视效益',
-                                type: 'line',
-                                data: datalist10,
-                            });
-                        }
-                        if ($(this).val() == "增供电量效益") {
-                            $.each(data.增供电量效益, function(index, item) {
-                                datalist11.push(item.value);
-                            });
-                            series.push({
-                                name: '增供电量效益',
-                                type: 'line',
-                                data: datalist11,
+
                             });
                         }
 
-                    });
+
+                    })
                 },
                 error: function(e) {
                     alert("查询失败:" + e);
@@ -906,7 +663,7 @@
             myChart3.clear(); //清除echarts加载的缓存
             option3 = {
                 title: {
-                    text: '类别3——配电自动化效益分析',
+                    text: '类别3——配电自动化关联分析',
                     x: 'left'
                 },
                 tooltip: {
@@ -915,7 +672,7 @@
                         var res = datas[0].name + '<br/>',
                             val;
                         for (var i = 0, length = datas.length; i < length; i++) {
-                            val = (datas[i].value) + ' 万元';
+                            val = (datas[i].value) + ' ';
                             res += datas[i].seriesName + '：' + val + '<br/>';
                         }
                         return res;
@@ -934,7 +691,7 @@
                 legend: {
                     x: 'center',
                     top: 30,
-                    data: Name
+                    data: time
                 },
                 toolbox: {
                     show: true,

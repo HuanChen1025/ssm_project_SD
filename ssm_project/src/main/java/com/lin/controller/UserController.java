@@ -201,6 +201,16 @@ public class UserController extends BaseController {
 	public String compute(){
 		return "Echart/compute";
 	}
+	
+    /**
+	 *  显示关联分析部分的查询
+	 *  @since 2017年7月24日 
+	 * @return
+	 */
+	@RequestMapping("/link_TRCCB")
+	public String link_TRCCB(){
+		return "Echart/link_TRCCB";
+	}
     
 
 }
