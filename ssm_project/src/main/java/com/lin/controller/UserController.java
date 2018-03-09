@@ -13,7 +13,7 @@ import com.lin.util.PagedResult;
 
 /**
  * 功能概要：UserController
- * @author chenhuan
+ * @author 
  * @since  2017年7月10日 
  */
 @Controller 
@@ -28,7 +28,7 @@ public class UserController extends BaseController {
 	
 	/**
 	 * 显示首页
-	 * @author chenhuan
+	 * @author 
 	 * @since  2017年7月10日 
 	 * @return
 	 */
@@ -99,7 +99,7 @@ public class UserController extends BaseController {
 	public String image(){
 		return "Echart/image";
 	}
-	//xiaoyiContract
+	
 	/**
 	 *  显示效益数据对比查询
 	 *  @since 2017年7月24日 
@@ -110,7 +110,7 @@ public class UserController extends BaseController {
 		return "Echart/xiaoyiContract";
 	}
 	
-	//Yunwei
+	
 	/**
 	 *  显示运维成本数据的单地区查询
 	 *  @since 2017年7月24日 
@@ -154,7 +154,7 @@ public class UserController extends BaseController {
 	
     /**
      * 分页查询公式信息
-     * @author chenhuan
+     * @author 
      * @since  2015年10月23日 
      * @param page
      * @return

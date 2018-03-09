@@ -12,10 +12,10 @@
         <meta name="format-detection" content="telephone=no">
         <title>国网成效分析</title>
         <script src="<%=request.getContextPath()%>/static/js/jQuery/jquery-2.1.4.min.js"></script>
-        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="<%=request.getContextPath()%>/static/js/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/static/js/bootstrap/css/bootstrap.min.css">
+        <link href="<%=request.getContextPath()%>/static/js/select2/select2.min.css" rel="stylesheet" />
+        <script src="<%=request.getContextPath()%>/static/js/select2/select2.js"></script>
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/css/common.css" />
         <script src="<%=request.getContextPath()%>/static/js/echart/echarts.js"></script>
         <style>

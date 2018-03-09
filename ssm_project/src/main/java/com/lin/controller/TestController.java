@@ -1,8 +1,6 @@
 package com.lin.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.annotation.Resource;
 import com.lin.common.HttpConstants;
 import com.lin.json.JsonDateValueProcessor;
@@ -10,18 +8,20 @@ import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.lin.domain.ResultData;
 import com.lin.service.GuimoService;
 
+/**
+ * 测试使用，无实际意义
+ * @author 
+ *
+ */
 
 public class TestController  {
 
-	
-	
-	
+
 	public static void main(String[] args) {
-		test t = new test();
-		t.ffff();
+		
+		
 		
 		
 	}
@@ -30,7 +30,7 @@ public class TestController  {
 
 	/**
 	 * 功能： 将查询出来的数据封装成json数据，并且json数据由两层组成
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7 月 20日
 	 * 
 	 */
@@ -43,26 +43,6 @@ public class TestController  {
     
     protected final static String DATE_FORMATE = "yyyy-MM-dd";
     
-    
-    
-
-    public  void ffff() {
-		long taskid=192L;
-		String tableName="tableName";
-		
-		JSONObject json = new JSONObject(); //用于给子层命名
-		
-
-		List<ResultData> list = new ArrayList<ResultData>();
-		list.add(new ResultData("DTU", "1200"));
-		list.add(new ResultData("FTU", "1800"));
-		list.add(new ResultData("环网柜", "1800"));
-		
-		//加上上一级名称
-		json.put("fan", list);
-		json.put("haha", list);
-		responseSuccess(json);
-	}
 	
 	/**
 	 * 返回成功

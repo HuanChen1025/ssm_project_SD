@@ -22,7 +22,6 @@ import com.lin.service.GuimoService;
 import com.lin.service.TouZiService;
 import com.lin.service.UserService;
 
-//select * from T_CXFX_MAIN_CQU t where element_name='工业拉升效益' and t.orgno in('37402','37403','37407','37406','37413')
 
 @Controller
 @RequestMapping("/user")  
@@ -33,7 +32,7 @@ public class DataController extends BaseController {
 	
 	
 	/**
-	 * 单地区多时间，社会效益
+	 * 单地区多时间查询，社会效益
 	 * @param city
 	 * @return
 	 */
@@ -63,7 +62,7 @@ public class DataController extends BaseController {
 		
 	}
 	/**
-	 * 企业效益
+	 * 企业效益查询
 	 * @param city
 	 * @return
 	 */
@@ -98,7 +97,7 @@ public class DataController extends BaseController {
 	/**
 	 * 测试传输多地区数据，传输企业效益数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月31日
 	 */
@@ -134,7 +133,7 @@ public class DataController extends BaseController {
 	/**
 	 * 测试传输多地区数据，传输企业效益数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月31日
 	 */
@@ -203,7 +202,7 @@ public class DataController extends BaseController {
 	/**
 	 * 测试传输多地区数据，传输投入成本数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月31日
 	 */
@@ -236,7 +235,12 @@ public class DataController extends BaseController {
 		}
 	}
 	
-	
+	/**
+	 * 查询类别1的效益数据
+	 * @param Name
+	 * @param time
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_data_class1.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benefit_data_class1(String[] Name,String time){
@@ -265,7 +269,12 @@ public class DataController extends BaseController {
 		
 	}
 	
-	
+	/**
+	 * 查询类别2的效益数据
+	 * @param Name
+	 * @param time
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_data_class2.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benefit_data_class2(String[] Name,String time){
@@ -297,7 +306,12 @@ public class DataController extends BaseController {
 		
 	}
 	
-	
+	/**
+	 * 查询类别3的效益数据
+	 * @param Name
+	 * @param time
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_data_class3.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benefit_data_class3(String[] Name,String time){
@@ -445,7 +459,12 @@ public class DataController extends BaseController {
 		
 		
 	}
-	
+	/**
+	 * 类别1的关联分析查询
+	 * @param name
+	 * @param searchTime
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_link_cost1.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benifit_link_cost1(String name,long[] searchTime){
@@ -471,7 +490,12 @@ public class DataController extends BaseController {
 		}
 		
 	}
-	
+	/**
+	 * 类别2的关联分析查询
+	 * @param name
+	 * @param searchTime
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_link_cost2.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benifit_link_cost2(String name,long[] searchTime){
@@ -497,7 +521,12 @@ public class DataController extends BaseController {
 		}
 		
 	}
-	
+	/**
+	 * 类别3的关联分析查询
+	 * @param name
+	 * @param searchTime
+	 * @return
+	 */
 	@RequestMapping(value="/benifit_link_cost3.do",method= RequestMethod.POST)
 	@ResponseBody
 	public String benifit_link_cost3(String name,long[] searchTime){

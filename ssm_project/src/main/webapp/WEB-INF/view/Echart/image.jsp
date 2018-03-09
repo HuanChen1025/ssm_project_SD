@@ -7,14 +7,14 @@
         <meta charset="utf-8">
         <title>建设模式可视化分析</title>
 		
-		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-		<script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.js"></script>
+        <script src="<%=request.getContextPath()%>/static/js/jQuery/jquery-2.1.4.min.js"></script>
+		<script src="<%=request.getContextPath()%>/static/js/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/static/js/bootstrap/css/bootstrap.min.css">
+        <script src="<%=request.getContextPath()%>/static/js/echart/echarts3.7.1.js"></script>
+
+
 		<!-- echart-gl 3D模型 -->
-		<script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+		<script src="<%=request.getContextPath()%>/static/js/echart/echarts-gl.min.js"></script>
     </head>
     <body>
 		 <script type="text/javascript">

@@ -10,7 +10,8 @@ import com.lin.domain.ResultData;
 
 
 public interface GuimoDao {
-	
+
+// 查找数据库中相应地区和年份的DTU和FTU数量
 List<DtuInfo>  selectDFtu(@Param("selectArea") String area,@Param("selectTime")String time); //采用@Param的参数传递方式会更加直接，但是其中的jdbdType仍然值得研究，并不是很明白
 
 //查询通信网的数据selectTime

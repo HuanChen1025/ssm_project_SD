@@ -9,11 +9,11 @@ import com.lin.domain.ResultData;
 import com.lin.domain.ValueNumber;
 
 public interface TouziDao {
-	
+	// 查询社会效益
 	List<ResultData> selectSHXY(@Param("selectArea") String area ,@Param("selectTime") String time);
-	
+	// 查询企业效益
 	List<ResultData> selectQYXY(@Param("selectArea") String area ,@Param("selectTime") String time);
-	
+	//查询运维成本
 	List<ResultData> selectYWCB(@Param("selectArea") String area ,@Param("selectTime") String time);
 	//查询类别1效益数据
 	List<ValueNumber> select_benefit_class1(@Param("searchName") String Name,@Param("selectTime") String time);

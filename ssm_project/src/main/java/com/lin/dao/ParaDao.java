@@ -11,14 +11,14 @@ import com.lin.domain.Paras;
 /**
  * 功能概要：Paras的DAO类
  * 
- * @author chenhuan
+ * @author 
  * @since 2017年7月20日
  */
 public interface ParaDao {
 	
 	/**
 	 * 
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7月20日
 	 * @param userId
 	 * @return 返回数据库中的计算公式列表

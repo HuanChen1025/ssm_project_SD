@@ -16,7 +16,7 @@ import com.lin.service.GuimoService;
 
 /**
  * 功能概要：ChartController
- * @author chenhuan
+ * @author 
  * @since 2017年 7月 15日
  *
  */
@@ -33,7 +33,7 @@ public class ChartController  extends BaseController {
 	/**
 	 * 测试传输多地区数据，通信网数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月20日
 	 */
@@ -70,7 +70,7 @@ public class ChartController  extends BaseController {
 	/**
 	 * 测试传输多地区数据，配电自动化系统的数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月24日
 	 */
@@ -106,7 +106,7 @@ public class ChartController  extends BaseController {
 	/**
 	 * 测试传输多地区数据，一次设备改造的数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月24日
 	 */
@@ -143,7 +143,7 @@ public class ChartController  extends BaseController {
 	/**
 	 * 测试传输多地区数据，线路数据
 	 * @param 城市名称city
-	 * @author chenhuan
+	 * @author 
 	 * @return 
 	 * @since 2017年7月24日
 	 */
@@ -181,7 +181,7 @@ public class ChartController  extends BaseController {
 	 * 单地区查询 通信网数据
 	 * @param city
 	 * @return
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7月18日
 	 */
 	@RequestMapping(value="/chart1.do",method= RequestMethod.POST)
@@ -218,7 +218,7 @@ public class ChartController  extends BaseController {
 	
 	/**
 	 * 单地区查询  配电自动化系统数据
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7月18日
 	 * @param city
 	 * @return
@@ -253,7 +253,7 @@ public class ChartController  extends BaseController {
 	
 	/**
 	 * 单地区查询 一次设备改造数据
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7月18日
 	 * @param city
 	 * @return
@@ -286,7 +286,7 @@ public class ChartController  extends BaseController {
 	
 	/**
 	 * 单地区查询 线路数据
-	 * @author chenhuan
+	 * @author 
 	 * @since 2017年7月18日
 	 * @param city
 	 * @return
